@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+  <head>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="alternate" href="http://rky0930.github.io/index.html" hreflang="pt-BR">
+<link href="http://gmpg.org/xfn/11" rel="profile">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="theme-color" content="#005344">
+<title> Numpy | Ryoo Gyoung-Yoon</title>
+<meta name="google-site-verification" content="zS1dSn20XtA4FJYEOQLXqI0boxZdMnJ2g3beje-cl20">
+<meta name="description" content="Numpy">
+<meta name="keywords" content="">
+<!-- Social: Facebook / Open Graph -->
+<meta property="og:url" content="http://rky0930.github.io/index.html/a-Numpy/">
+<meta property="og:title" content=" Numpy | Ryoo Gyoung-Yoon">
+<meta property="og:description" content="Numpy">
+<meta property="og:site_name" content="Ryoo Gyoung-Yoon">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:author" content="http://facebook.com/rky0930">
+<meta property="og:image" content="http://rky0930.github.io/index.html">
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nandomoreirame">
+<meta name="twitter:domain" content="http://rky0930.github.io/index.html">
+<meta name="twitter:title" content=" Numpy | Ryoo Gyoung-Yoon">
+<meta name="twitter:description" content="Numpy">
+<meta name="twitter:image:src" content="http://rky0930.github.io/index.html">
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="114x114" href="http://rky0930.github.io/index.html/assets/ico/apple-touch-icon-114-516f4e19976b9e4dbb77ad9b576831fe.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://rky0930.github.io/index.html/assets/ico/apple-touch-icon-72-5409b2df229305703caf583d86c845ab.png">
+<link rel="apple-touch-icon" href="http://rky0930.github.io/index.html/assets/ico/apple-touch-icon-57-aa873e019cf659e0d4e6a0b5bb9f379d.png">
+<link rel="shortcut icon" href="http://rky0930.github.io/index.html/assets/ico/favicon-b5ecc36e2f9d7bd353ee91851eb81a94.png">
+<!-- rel prev and next -->
+<!-- Canonical link tag -->
+<link rel="canonical" href="http://rky0930.github.io/index.html/a-Numpy/">
+<link rel="alternate" type="application/rss+xml" title="Ryoo Gyoung-Yoon" href="http://rky0930.github.io/index.html/feed.xml">
+<link rel="stylesheet" href="/assets/main-e03fd29918e6a55fb4e40f4e044772fc.css">
+<script src="/assets/modernizr-custom-cb807611a3e262b2eac59444cbab74d6.js" data-cfasync="false"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Website",
+  "publisher": "rky0930.github.io",
+  "url": "http://rky0930.github.io/",
+  "description": ""
+}
+</script>
+<script type="text/javascript">
+  var disqus_shortname = 'tech blog',
+      baseurl          = '';
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+    <meta name="robots" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+    <meta name="googlebot" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+  </head>
+  <body class="post-template single">
+    <header class="header">
+  <div class="container">
+    <h1><a href="/"><strong>rky0930</strong>.github.io</a></h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#!" data-modal="modalSearch"><i class="fa fa-search"></i></a></li>
+        <!--<li><a href="/feed.xml" target="_blank"><i class="fa fa-feed"></i></a></li>-->
+      </ul>
+    </nav>
+  </div>
+</header>
+    <main class="wrapper container" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+      <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+  <header class="post-header">
+    <h1>Numpy</h1>
+    <div class="post-meta">
+      <time datetime="2015-10-13">
+        <i class="fa fa-calendar-o"></i> <time datetime="2017-05-01"> 2017-05-01
+      </time>
+      <span>
+        <i class="fa fa-comments"></i> <a href="/a-Numpy/#disqus_thread" data-disqus-identifier="/a-Numpy">Leave a comment</a>
+      </span>
+      <span>
+        <i class="fa fa-folder-open-o"></i> 
+      </span>
+    </div>
+  </header>
+  <h1 id="numpy">Numpy</h1>
+<p>이번 주제는 Numpy 입니다.<br />
+파이썬은 사용하기 편리하지만 느린게 단점입니다. 그래서, C 같은 동작이 빠른 언어로 작성된 라이브러리를 호출해서 사용 할 수 있도록 했습니다. 
+Numpy가 같은 원리로 작성된 라이브러리입니다. Numpy는 파이썬이 기본적으로 제공하는 계산보다 더 빠르고 효율적으로 동작합니다.</p>
+<p>자세한 설명은 여기 <a href="https://docs.scipy.org/doc/numpy/reference/">Numpy Reference</a>를 참고 하시기 바랍니다.</p>
+<p>이 포스트에는 Numpy에서 자주 사용하는 코드 조각을 모아 두려고 합니다.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Importing NumPy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="c"># Scalars (uint8, int8, uint16, int16)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">shape</span> <span class="c"># ()</span>
+<span class="c"># Vector </span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">v</span><span class="o">.</span><span class="n">shape</span> <span class="c"># (3,)</span>
+<span class="c"># Numpy Indexing </span>
+<span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="c"># Matrices</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">shape</span> <span class="c"># (3, 3)</span>
+<span class="c"># Tensors</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]],[[</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">]],[[</span><span class="mi">5</span><span class="p">],[</span><span class="mi">6</span><span class="p">]]],[[[</span><span class="mi">7</span><span class="p">],[</span><span class="mi">8</span><span class="p">]],</span>\
+    <span class="p">[[</span><span class="mi">9</span><span class="p">],[</span><span class="mi">10</span><span class="p">]],[[</span><span class="mi">11</span><span class="p">],[</span><span class="mi">12</span><span class="p">]]],[[[</span><span class="mi">13</span><span class="p">],[</span><span class="mi">14</span><span class="p">]],[[</span><span class="mi">15</span><span class="p">],[</span><span class="mi">16</span><span class="p">]],[[</span><span class="mi">17</span><span class="p">],[</span><span class="mi">17</span><span class="p">]]]])</span>
+<span class="n">t</span><span class="o">.</span><span class="n">shape</span> <span class="c"># (3, 3, 2, 1)</span>
+<span class="c"># Changing Shapes</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span> <span class="c"># 같음   x = v.reshape(1,4) </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">v</span><span class="p">[:,</span> <span class="bp">None</span><span class="p">]</span> <span class="c"># 같음   x = v.reshape(4,1)</span>
+<span class="c"># Numpy 스타일의 메트릭스 데이터 변경</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span>  
+<span class="c"># values 타입이 ndarray 라면 </span>
+<span class="n">values</span> <span class="o">+=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">some_array</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="c"># some_array 타입이 ndarray 라면 </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">some_array</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="n">m</span> <span class="o">*=</span> <span class="mi">0</span>  <span class="c"># Element 모두 0 만들기</span></code></pre></div>
+<p><br />
+<br /></p>
+<h3 id="important-reminders-about-matrix-multiplication">Important Reminders About Matrix Multiplication</h3>
+<ol>
+  <li>Order matters. Multiplying A•B is not the same as multiplying B•A.<br />
+  = 행렬 곱의 순서가 변경되면 결과값은 바뀐다.</li>
+  <li>Data in the left matrix should be arranged as rows., while data in the right matrix should be arranged as columns.<br />
+  = 왼쪽의 메트릭스 데이터 배열을 로우로, 오른쪽의 메트릭스 배열은 컬럼으로 되어야 한다.<br />
+  Ex) = * ||</li>
+</ol>
+<h3 id="numpy-matrix-multiplication">NumPy Matrix Multiplication</h3>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="n">m</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[1, 2, 3],</span>
+<span class="c">#        [4, 5, 6]])</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mf">0.25</span>
+<span class="n">n</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 0.25,  0.5 ,  0.75],</span>
+<span class="c">#        [ 1.  ,  1.25,  1.5 ]])</span>
+<span class="n">m</span> <span class="o">*</span> <span class="n">n</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 0.25,  1.  ,  2.25],</span>
+<span class="c">#        [ 4.  ,  6.25,  9.  ]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>   <span class="c"># 같음 to m * n</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 0.25,  1.  ,  2.25],</span>
+<span class="c">#        [ 4.  ,  6.25,  9.  ]])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>
+<span class="n">a</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[1, 2, 3, 4],</span>
+<span class="c">#        [5, 6, 7, 8]])</span>
+<span class="n">a</span><span class="o">.</span><span class="n">shape</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># (2, 4)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+<span class="n">b</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 1,  2,  3],</span>
+<span class="c">#        [ 4,  5,  6],</span>
+<span class="c">#        [ 7,  8,  9],</span>
+<span class="c">#        [10, 11, 12]])</span>
+<span class="n">b</span><span class="o">.</span><span class="n">shape</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># (4, 3)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>  <span class="c">#  np.multiply(a, b) 와 동작이 다름 </span>
+<span class="n">c</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 70,  80,  90],</span>
+<span class="c">#        [158, 184, 210]])</span>
+<span class="n">c</span><span class="o">.</span><span class="n">shape</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># (2, 3)</span>
+<span class="c"># Shape가 맞지 않으면 오류 발생</span>
+<span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="c"># displays the following error:</span>
+<span class="c"># ValueError: shapes (4,3) and (2,4) not aligned: 3 (dim 1) != 2 (dim 0)</span></code></pre></div>
+<h3 id="numpys-dot-function">NumPy’s dot function</h3>
+<dl>
+  <dt>matmul differs from dot in two important ways.</dt>
+  <dd>
+    <dl>
+      <dt>matmul 은 dot과 2가지가 다르다.  </dt>
+      <dt>1. Multiplication by scalars is not allowed.</dt>
+      <dd>scalars 값과 Multiplication이 허용되지 않는다. <br />
+2. Stacks of matrices are broadcast together as if the matrices were elements.</dd>
+      <dd>요소가 메트릭스라면 메트릭스 스택이 브로드 케스팅 된다. (…어렵다.. <a href="http://studymake.tistory.com/44">브로드캐스팅</a> 개념 링크 추가)</dd>
+    </dl>
+  </dd>
+</dl>
+<h3 id="transpose">Transpose</h3>
+<p>메트릭스에서 행과 열을 바꾸기</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+<span class="n">m</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 1,  2,  3,  4],</span>
+<span class="c">#        [ 5,  6,  7,  8],</span>
+<span class="c">#        [ 9, 10, 11, 12]])</span>
+<span class="n">m</span><span class="o">.</span><span class="n">T</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 1,  5,  9],</span>
+<span class="c">#        [ 2,  6, 10],</span>
+<span class="c">#        [ 3,  7, 11],</span>
+<span class="c">#        [ 4,  8, 12]])</span></code></pre></div>
+<h3 id="max--min">MAX &amp; MIN</h3>
+<p>메트릭스의 최대, 최소, 평균 값 구하기</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+<span class="n">m</span>
+<span class="c"># displays the following result:</span>
+<span class="c"># array([[ 1,  2,  3,  4],</span>
+<span class="c">#        [ 5,  6,  7,  8],</span>
+<span class="c">#        [ 9, 10, 11, 12]])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>  <span class="c"># 최소값</span>
+<span class="mi">1</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> 
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">numpy</span><span class="o">.</span><span class="n">int64</span><span class="s">&#39;&gt;</span>
+<span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="c"># 최대값</span>
+<span class="mi">12</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> 
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">numpy</span><span class="o">.</span><span class="n">int64</span><span class="s">&#39;&gt;</span>
+<span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="c"># 평균값</span>
+<span class="mf">6.5</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> 
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">numpy</span><span class="o">.</span><span class="n">float64</span><span class="s">&#39;&gt;</span></code></pre></div>
+  <footer class="post-footer">
+    <section class="author">
+      <h4>Ryoo Gyoung-Yoon</h4>
+      <p>Personal Tech Blog</p>
+    </section>
+<aside class="share">
+  <h4>Share this.</h4>
+  <a href="http://twitter.com/share?text=Numpy&amp;url=http://rky0930.github.io/index.html/a-Numpy/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+  onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter-square"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://rky0930.github.io/index.html/a-Numpy/"
+  onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook-square"></i>
+  </a>
+</aside>
+      <hr>
+<aside id="comments" class="disqus">
+  <h3 class="txt-center"><i class="fa fa-comments"></i> Comments</h3>
+  <hr>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_identifier = '/a-Numpy';
+    var disqus_title = 'Numpy';
+    var disqus_url = 'http://rky0930.github.io/index.html/a-Numpy/';
+    /*var disqus_developer = 1;*/
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+  </noscript>
+</aside>
+  </footer>
+</article>
+    </main>
+<footer class="footer">
+  <div class="container">
+    <ul class="icons">
+      <li>
+        <a href="http://github.com/rky0930" class="icon-github" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a href="http://facebook.com/rky0930" class="icon-facebook" target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a href="http://linkedin.com/in/rky0930" class="icon-linkedin" target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    </ul>
+    <p>
+      <q></q>
+      <small>– </small>
+    </p>
+    <small class="clearfix">
+      Made with <a href="http://jekyllrb.com" target="_blank">Jekyll</a> • <a href="https://github.com/rky0930" target="_blank">Open source <i class="fa fa-heart"></i></a>
+    </small>
+  </div>
+</footer>
+<a class="scroll-up fa fa-chevron-up bounce" href="#" data-position="0"></a>
+<div id="modalSearch" class="modal">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <a href="#!" class="modal-close" data-modal-close>&times;</a>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search in 6 articles">
+      <ul id="results-container"></ul>
+    </div>
+  </div>
+</div>
+    <script src="/assets/main-52d417e8a6ff9f5b168386d37c96338a.js"></script>
+  </body>
+</html>
