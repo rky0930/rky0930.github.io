@@ -3,7 +3,7 @@
   
     
     <url>
-      <loc>http://127.0.0.1:4000/a-Neural%20_Network_To_read/</loc>
+      <loc>http://rky0930.github.io/a-Neural%20_Network_To_read/</loc>
       
         <lastmod>2020-01-01T09:00:01+09:00</lastmod>
       
@@ -18,7 +18,7 @@
   
     
     <url>
-      <loc>http://127.0.0.1:4000/a-Neural%20_Network_Intro_Neural_Network/</loc>
+      <loc>http://rky0930.github.io/a-Neural%20_Network_Intro_Neural_Network/</loc>
       
         <lastmod>2017-05-07T10:45:00+09:00</lastmod>
       
@@ -33,7 +33,7 @@
   
     
     <url>
-      <loc>http://127.0.0.1:4000/a-Numpy/</loc>
+      <loc>http://rky0930.github.io/a-Numpy/</loc>
       
         <lastmod>2017-05-01T04:36:00+09:00</lastmod>
       
@@ -48,7 +48,7 @@
   
     
     <url>
-      <loc>http://127.0.0.1:4000/a-Neural%20_Network_Regression/</loc>
+      <loc>http://rky0930.github.io/a-Neural%20_Network_Regression/</loc>
       
         <lastmod>2017-05-01T04:36:00+09:00</lastmod>
       
@@ -63,7 +63,7 @@
   
     
     <url>
-      <loc>http://127.0.0.1:4000/a-Neural%20_Network_Applying_deep_learing/</loc>
+      <loc>http://rky0930.github.io/a-Neural%20_Network_Applying_deep_learing/</loc>
       
         <lastmod>2017-04-30T09:33:00+09:00</lastmod>
       
@@ -78,7 +78,7 @@
   
     
     <url>
-      <loc>http://127.0.0.1:4000/a-Neural%20_Network_Jupyter_notebook/</loc>
+      <loc>http://rky0930.github.io/a-Neural%20_Network_Jupyter_notebook/</loc>
       
         <lastmod>2017-04-30T05:33:00+09:00</lastmod>
       
@@ -93,7 +93,7 @@
   
     
     <url>
-      <loc>http://127.0.0.1:4000/a-Neural%20_Network_Anaconda/</loc>
+      <loc>http://rky0930.github.io/a-Neural%20_Network_Anaconda/</loc>
       
         <lastmod>2017-04-30T00:33:00+09:00</lastmod>
       
@@ -113,32 +113,9 @@
 
     
     <url>
-      <loc>http://127.0.0.1:4000404.html</loc>
+      <loc>http://rky0930.github.io404.html</loc>
       
-        <lastmod>2017-05-21T02:42:04+09:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.3</priority>
-      
-    </url>
-    
-  
-    
-    
-
-    
-  
-    
-    
-
-    
-    <url>
-      <loc>http://127.0.0.1:4000/category/welcome/</loc>
-      
-        <lastmod>2017-05-21T02:42:04+09:00</lastmod>
+        <lastmod>2017-05-21T13:33:18+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -159,9 +136,32 @@
 
     
     <url>
-      <loc>http://127.0.0.1:4000</loc>
+      <loc>http://rky0930.github.io/category/welcome/</loc>
       
-        <lastmod>2017-05-21T02:42:04+09:00</lastmod>
+        <lastmod>2017-05-21T13:33:18+09:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+    
+
+    
+  
+    
+    
+
+    
+    <url>
+      <loc>http://rky0930.github.io</loc>
+      
+        <lastmod>2017-05-21T13:33:18+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -187,27 +187,9 @@
 
     
     <url>
-      <loc>http://127.0.0.1:4000/tag/hello-world/</loc>
+      <loc>http://rky0930.github.io/tag/hello-world/</loc>
       
-        <lastmod>2017-05-21T02:42:04+09:00</lastmod>
-      
-      
-        <changefreq>monthly</changefreq>
-      
-      
-        <priority>0.3</priority>
-      
-    </url>
-    
-  
-    
-    
-
-    
-    <url>
-      <loc>http://127.0.0.1:4000/tag/welcome/</loc>
-      
-        <lastmod>2017-05-21T02:42:04+09:00</lastmod>
+        <lastmod>2017-05-21T13:33:18+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -223,9 +205,27 @@
 
     
     <url>
-      <loc>http://127.0.0.1:4000</loc>
+      <loc>http://rky0930.github.io/tag/welcome/</loc>
       
-        <lastmod>2017-05-21T02:42:04+09:00</lastmod>
+        <lastmod>2017-05-21T13:33:18+09:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+    
+
+    
+    <url>
+      <loc>http://rky0930.github.io</loc>
+      
+        <lastmod>2017-05-21T13:33:18+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
