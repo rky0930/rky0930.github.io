@@ -9,10 +9,18 @@
     } ,
   
     {
+      "title"    : "sklearn",
+      "category" : "sklearn",
+      "tags"     : "sklearn",
+      "url"      : "/a-Sklearn/",
+      "date"     : "2017-06-03 06:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "Docker",
       "category" : "docker",
       "tags"     : "Docker",
-      "url"      : "/a-Docker.1/",
+      "url"      : "/a-Docker/",
       "date"     : "2017-06-02 23:30:00 +0900"
     } ,
   

@@ -18,7 +18,22 @@
   
     
     <url>
-      <loc>http://rky0930.github.io/a-Docker.1/</loc>
+      <loc>http://rky0930.github.io/a-Sklearn/</loc>
+      
+        <lastmod>2017-06-03T06:00:00+09:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.5</priority>
+      
+    </url>
+    
+  
+    
+    <url>
+      <loc>http://rky0930.github.io/a-Docker/</loc>
       
         <lastmod>2017-06-02T23:30:00+09:00</lastmod>
       
@@ -160,7 +175,7 @@
     <url>
       <loc>http://rky0930.github.io404.html</loc>
       
-        <lastmod>2017-07-02T15:58:42+09:00</lastmod>
+        <lastmod>2017-07-03T00:35:06+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -183,7 +198,7 @@
     <url>
       <loc>http://rky0930.github.io/category/welcome/</loc>
       
-        <lastmod>2017-07-02T15:58:42+09:00</lastmod>
+        <lastmod>2017-07-03T00:35:06+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -206,7 +221,7 @@
     <url>
       <loc>http://rky0930.github.io</loc>
       
-        <lastmod>2017-07-02T15:58:42+09:00</lastmod>
+        <lastmod>2017-07-03T00:35:06+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -234,7 +249,7 @@
     <url>
       <loc>http://rky0930.github.io/tag/hello-world/</loc>
       
-        <lastmod>2017-07-02T15:58:42+09:00</lastmod>
+        <lastmod>2017-07-03T00:35:06+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -252,7 +267,7 @@
     <url>
       <loc>http://rky0930.github.io/tag/welcome/</loc>
       
-        <lastmod>2017-07-02T15:58:42+09:00</lastmod>
+        <lastmod>2017-07-03T00:35:06+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
@@ -270,7 +285,25 @@
     <url>
       <loc>http://rky0930.github.io</loc>
       
-        <lastmod>2017-07-02T15:58:42+09:00</lastmod>
+        <lastmod>2017-07-03T00:35:06+09:00</lastmod>
+      
+      
+        <changefreq>monthly</changefreq>
+      
+      
+        <priority>0.3</priority>
+      
+    </url>
+    
+  
+    
+    
+
+    
+    <url>
+      <loc>http://rky0930.github.io</loc>
+      
+        <lastmod>2017-07-03T00:35:06+09:00</lastmod>
       
       
         <changefreq>monthly</changefreq>
