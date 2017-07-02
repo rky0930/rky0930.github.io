@@ -9,10 +9,34 @@
     } ,
   
     {
+      "title"    : "Docker",
+      "category" : "docker",
+      "tags"     : "Docker",
+      "url"      : "/a-Docker.1/",
+      "date"     : "2017-06-02 23:30:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Redis",
+      "category" : "redis",
+      "tags"     : "Redis",
+      "url"      : "/a-Redis/",
+      "date"     : "2017-06-02 23:00:00 +0900"
+    } ,
+  
+    {
       "title"    : "Neural Networks  1 - 5 | Intro to Neural Networks ",
       "category" : "intro to neural networks",
       "tags"     : "Intro to Neural Networks",
       "url"      : "/a-Neural%20_Network_Intro_Neural_Network/",
+      "date"     : "2017-05-07 10:45:00 +0900"
+    } ,
+  
+    {
+      "title"    : "Neural Networks  1 - 9 | Implementing Backpropagation",
+      "category" : "implementing backpropagation",
+      "tags"     : "Implementing Backpropagation",
+      "url"      : "/a-Neural%20_Network_Implementing_Backpropagation/",
       "date"     : "2017-05-07 10:45:00 +0900"
     } ,
   

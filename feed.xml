@@ -5,8 +5,8 @@
     <description></description>
     <link>http://rky0930.github.io/</link>
     <atom:link href="http://rky0930.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 21 May 2017 13:33:18 +0900</pubDate>
-    <lastBuildDate>Sun, 21 May 2017 13:33:18 +0900</lastBuildDate>
+    <pubDate>Sun, 02 Jul 2017 15:58:42 +0900</pubDate>
+    <lastBuildDate>Sun, 02 Jul 2017 15:58:42 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -24,6 +24,34 @@
       </item>
     
       <item>
+        <title>Docker</title>
+        <description>&lt;h1 id=&quot;docker&quot;&gt;Docker&lt;/h1&gt; &lt;h3 id=&quot;sudo-----docker---&quot;&gt;sudo를 매번 입력하지 않기 위해 Docker 그룹에 유저 넣기&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo usermod -aG docker &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; sudo service docker restart&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3 id=&quot;section&quot;&gt;이미지 찾기&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;웹: https://hub.docker.com&lt;/li&gt; &lt;li&gt;이름: 공식이미지, 올린사람id/이지미이름&lt;/li&gt; &lt;li&gt;Tags: 이미지 변경에 따른 버전 관리&lt;/li&gt; &lt;li&gt;최신 Tags가 Latest로 명시됨&lt;/li&gt; &lt;/ul&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;명령어: docker search &amp;lt;이미지이름&amp;gt; ex&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; docker search&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3 id=&quot;pull&quot;&gt;이미지 다운로드(pull)&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker pull &amp;lt;이미지이름&amp;gt;:&amp;lt;태그&amp;gt; ex&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; docker pull redis:Latest redis 최신 이미지 받기&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;테그 명시 안하면 최신으로 받음&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3 id=&quot;section-1&quot;&gt;이미지 확인&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker images&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3 id=&quot;section-2&quot;&gt;이미지 실행(컨테이너 만들기)&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;docker run -i...</description>
+        <pubDate>Fri, 02 Jun 2017 23:30:00 +0900</pubDate>
+        <link>http://rky0930.github.io/a-Docker.1/</link>
+        <guid isPermaLink="true">http://rky0930.github.io/a-Docker.1/</guid>
+        
+        <category>Docker</category>
+        
+        
+        <category>docker</category>
+        
+      </item>
+    
+      <item>
+        <title>Redis</title>
+        <description>&lt;h1 id=&quot;redis--remote-dictionary-server&quot;&gt;Redis (REmote DIctionary Server)&lt;/h1&gt; &lt;h2 id=&quot;section&quot;&gt;원격 딕셔너리 서버&lt;/h2&gt; &lt;h3 id=&quot;cli-&quot;&gt;cli 실행&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;redis-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h2 id=&quot;section-1&quot;&gt;데이터타입&lt;/h2&gt; &lt;h3 id=&quot;string-&quot;&gt;String 타입&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;Redis의 기본 데이터형&lt;/li&gt; &lt;li&gt;이진데이터 저장 가능&lt;/li&gt; &lt;li&gt;정수, 실수형 등은 없음&lt;/li&gt; &lt;li&gt;한키에 최대 512MB&lt;br /&gt; &lt;br /&gt;&lt;/li&gt; &lt;/ul&gt; &lt;h3 id=&quot;section-2&quot;&gt;기본포트&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;port - 6379&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h2 id=&quot;section-3&quot;&gt;명령어&lt;/h2&gt; &lt;h3 id=&quot;set&quot;&gt;set&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &amp;lt;key&amp;gt; &amp;lt;value&amp;gt; ex&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;mykey &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3 id=&quot;get&quot;&gt;get&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;get &amp;lt;key&amp;gt; ex&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; get mykey&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3 id=&quot;mset&quot;&gt;mset&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;mset &amp;lt;key1&amp;gt; &amp;lt;value1&amp;gt; &amp;lt;key2&amp;gt; &amp;lt;value2&amp;gt; &amp;lt;key3&amp;gt; &amp;lt;value3&amp;gt; ex&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; mset value1 &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; value2 &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt; value3 30&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3...</description>
+        <pubDate>Fri, 02 Jun 2017 23:00:00 +0900</pubDate>
+        <link>http://rky0930.github.io/a-Redis/</link>
+        <guid isPermaLink="true">http://rky0930.github.io/a-Redis/</guid>
+        
+        <category>Redis</category>
+        
+        
+        <category>redis</category>
+        
+      </item>
+    
+      <item>
         <title>Neural Networks  1 - 5 | Intro to Neural Networks </title>
         <description>&lt;p&gt;Udacity의 Deep Learing 강의에서 “Intro to Neural Networks”은 Luis Serrano 라는 분이 맡았는데요. 이분의 강의는 &lt;a href=&quot;https://github.com/AccelAI/DemystifyingDeepLearning-AI/blob/master/nov16/november16.md&quot;&gt;github&lt;/a&gt;와 &lt;a href=&quot;https://youtu.be/BR9h47Jtqyw&quot;&gt;YouTube&lt;/a&gt;에 공개 되어 있습니다. 저도 공개된 자료를 참고하여 포스팅 하려고 합니다.&lt;br /&gt; &lt;br /&gt;&lt;/p&gt; &lt;h1 id=&quot;intro-to-neural-networks&quot;&gt;Intro to Neural Networks&lt;/h1&gt; &lt;ol&gt; &lt;li&gt; &lt;p&gt;Neural Networks를 상상 할때 아래와 같은 그림을 떠오른적 있으신가요 ? 멋진 로봇 &amp;amp; 뇌, 그리고 외계인 등등 &lt;img src=&quot;http://rky0930.github.io/assets/static/Intro_to_Neural_Network/Intro_1.png&quot; width=&quot;600&quot; /&gt; &lt;br /&gt;&lt;br /&gt;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;실제 Neural Networks는 아래와 같습니다.&lt;br /&gt; 못생겼죠..? 복잡해 보이네요. 저게 뭔지도 모르겠고 .. ㅎㅎ 저도 같은 생각 이었습니다. 너무 걱정하지 마세요.&lt;br /&gt; &lt;img src=&quot;http://rky0930.github.io/assets/static/Intro_to_Neural_Network/Intro_2.png&quot; width=&quot;800&quot; /&gt; &lt;br /&gt;&lt;br /&gt;&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;이 포스팅이 참고하는 자료에...</description>
         <pubDate>Sun, 07 May 2017 10:45:00 +0900</pubDate>
@@ -34,6 +62,27 @@
         
         
         <category>intro to neural networks</category>
+        
+      </item>
+    
+      <item>
+        <title>Neural Networks  1 - 9 | Implementing Backpropagation</title>
+        <description>&lt;h1 id=&quot;implementing-backpropagation&quot;&gt;Implementing Backpropagation&lt;/h1&gt;
+&lt;!--원칙 데이터 셋 만 가져다 쓴다--&gt;
+
+&lt;p&gt;[[[]]]&lt;/p&gt;
+
+&lt;h1 id=&quot;full-source-code&quot;&gt;Full Source Code&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/rky0930/AI&quot;&gt;Full Source Code&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 07 May 2017 10:45:00 +0900</pubDate>
+        <link>http://rky0930.github.io/a-Neural%20_Network_Implementing_Backpropagation/</link>
+        <guid isPermaLink="true">http://rky0930.github.io/a-Neural%20_Network_Implementing_Backpropagation/</guid>
+        
+        <category>Implementing Backpropagation</category>
+        
+        
+        <category>implementing backpropagation</category>
         
       </item>
     

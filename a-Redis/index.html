@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+  <head>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="alternate" href="http://rky0930.github.io" hreflang="pt-BR">
+<link href="http://gmpg.org/xfn/11" rel="profile">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="theme-color" content="#005344">
+<title> Redis | Ryoo Gyoung-Yoon</title>
+<meta name="google-site-verification" content="zS1dSn20XtA4FJYEOQLXqI0boxZdMnJ2g3beje-cl20">
+<meta name="description" content="Redis">
+<meta name="keywords" content="">
+<!-- Social: Facebook / Open Graph -->
+<meta property="og:url" content="http://rky0930.github.io/a-Redis/">
+<meta property="og:title" content=" Redis | Ryoo Gyoung-Yoon">
+<meta property="og:description" content="Redis">
+<meta property="og:site_name" content="Ryoo Gyoung-Yoon">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:author" content="http://facebook.com/rky0930">
+<meta property="og:image" content="http://rky0930.github.io">
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nandomoreirame">
+<meta name="twitter:domain" content="http://rky0930.github.io">
+<meta name="twitter:title" content=" Redis | Ryoo Gyoung-Yoon">
+<meta name="twitter:description" content="Redis">
+<meta name="twitter:image:src" content="http://rky0930.github.io">
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="114x114" href="http://rky0930.github.io/assets/ico/apple-touch-icon-114-516f4e19976b9e4dbb77ad9b576831fe.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://rky0930.github.io/assets/ico/apple-touch-icon-72-5409b2df229305703caf583d86c845ab.png">
+<link rel="apple-touch-icon" href="http://rky0930.github.io/assets/ico/apple-touch-icon-57-aa873e019cf659e0d4e6a0b5bb9f379d.png">
+<link rel="shortcut icon" href="http://rky0930.github.io/assets/ico/favicon-b5ecc36e2f9d7bd353ee91851eb81a94.png">
+<!-- rel prev and next -->
+<!-- Canonical link tag -->
+<link rel="canonical" href="http://rky0930.github.io/a-Redis/">
+<link rel="alternate" type="application/rss+xml" title="Ryoo Gyoung-Yoon" href="http://rky0930.github.io/feed.xml">
+<link rel="stylesheet" href="/assets/main-e03fd29918e6a55fb4e40f4e044772fc.css">
+<script src="/assets/modernizr-custom-cb807611a3e262b2eac59444cbab74d6.js" data-cfasync="false"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Website",
+  "publisher": "rky0930.github.io",
+  "url": "http://rky0930.github.io/",
+  "description": ""
+}
+</script>
+<script type="text/javascript">
+  var disqus_shortname = 'tech blog',
+      baseurl          = '';
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+    <meta name="robots" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+    <meta name="googlebot" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+  </head>
+  <body class="post-template single">
+    <header class="header">
+  <div class="container">
+    <h1><a href="/"><strong>rky0930</strong>.github.io</a></h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#!" data-modal="modalSearch"><i class="fa fa-search"></i></a></li>
+        <!--<li><a href="/feed.xml" target="_blank"><i class="fa fa-feed"></i></a></li>-->
+      </ul>
+    </nav>
+  </div>
+</header>
+    <main class="wrapper container" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+      <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+  <header class="post-header">
+    <h1>Redis</h1>
+    <div class="post-meta">
+      <time datetime="2015-10-13">
+        <i class="fa fa-calendar-o"></i> <time datetime="2017-06-02"> 2017-06-02
+      </time>
+      <span>
+        <i class="fa fa-comments"></i> <a href="/a-Redis/#disqus_thread" data-disqus-identifier="/a-Redis">Leave a comment</a>
+      </span>
+      <span>
+        <i class="fa fa-folder-open-o"></i> 
+      </span>
+    </div>
+  </header>
+  <h1 id="redis--remote-dictionary-server">Redis  (REmote DIctionary Server)</h1>
+<h2 id="section">원격 딕셔너리 서버</h2>
+<h3 id="cli-">cli 실행</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">redis-cli</code></pre></div>
+<h2 id="section-1">데이터타입</h2>
+<h3 id="string-">String 타입</h3>
+<ul>
+  <li>Redis의 기본 데이터형</li>
+  <li>이진데이터 저장 가능</li>
+  <li>정수, 실수형 등은 없음</li>
+  <li>한키에 최대 512MB<br />
+<br /></li>
+</ul>
+<h3 id="section-2">기본포트</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">port - 6379</code></pre></div>
+<h2 id="section-3">명령어</h2>
+<h3 id="set">set</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set</span> &lt;key&gt; &lt;value&gt;
+ex<span class="o">)</span> <span class="nb">set </span>mykey <span class="s2">&quot;hello&quot;</span></code></pre></div>
+<h3 id="get">get</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">get &lt;key&gt;
+ex<span class="o">)</span> get mykey</code></pre></div>
+<h3 id="mset">mset</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mset &lt;key1&gt; &lt;value1&gt; &lt;key2&gt; &lt;value2&gt; &lt;key3&gt; &lt;value3&gt;
+ex<span class="o">)</span> mset value1 <span class="m">10</span> value2 <span class="m">20</span> value3 30</code></pre></div>
+<h3 id="mget">mget</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">mget &lt;key1&gt; &lt;key2&gt; &lt;key3&gt;
+ex<span class="o">)</span> mget value1 value2 value3</code></pre></div>
+<h2 id="section-4">값 증감</h2>
+<p>서버에서 변경하는 이유는<br />
+클라이언트와 트랜잭션이뤄지는 동안 값이 변경는 것을 막기위해 이 기능을 사용함
+<br />
+<br /></p>
+<h3 id="incr--1-">INCR (값 1 증가)</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">INCR &lt;key&gt;
+ex<span class="o">)</span> INCR mykey</code></pre></div>
+<h3 id="incrby----">INCRBY (특정 값 만큼 증가)</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">INCRBY &lt;key&gt; number
+ ex<span class="o">)</span> INCRBY mykey 3</code></pre></div>
+<h3 id="decr--1-">DECR (값 1 감소)</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">DECR &lt;key&gt;
+ ex<span class="o">)</span> DECR mykey</code></pre></div>
+<h3 id="decrby----">DECRBY (특정 값 만큼 감소)</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">DECRBY &lt;key&gt; number
+ ex<span class="o">)</span> DECRBY mykey 3</code></pre></div>
+<h3 id="section-5">값의 문자열 길이</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">STRLEN mykey
+ ex<span class="o">)</span> <span class="o">(</span>세팅<span class="o">)</span><span class="nb">set </span>mykey <span class="s2">&quot;HELLO WORLD&quot;</span>
+    STRLEN mykey</code></pre></div>
+<p><br /></p>
+<h1 id="section-6">명령어 상세 설명</h1>
+<h2 id="set-1">set</h2>
+<ul>
+  <li>String 의 집합</li>
+  <li>중복을 허용하지 않음</li>
+  <li>삽입 순서로 저장됨</li>
+  <li>(순서가 중요하진 않음)</li>
+  <li>최대 약 42억개 저장</li>
+  <li>성능때문에 수천개만 저장 권장</li>
+</ul>
+<h3 id="set-">여러 맴버를 가진 Set 만들기</h3>
+<ul>
+  <li>Key에 value 추가</li>
+  <li>return값은 integer인데 저장된 값의 개수를 표시해줌 (1-&gt; 1개 저장, 0-&gt; 0개 저장)</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sadd &lt;key&gt; &lt;value&gt;
+ ex<span class="o">)</span> saad myset <span class="s2">&quot;Hello&quot;</span>
+     saad myset <span class="s2">&quot;World&quot;</span></code></pre></div>
+<h3 id="smembers">smembers</h3>
+<ul>
+  <li>멤버 보기</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">smembers &lt;key&gt; 
+ex<span class="o">)</span> smembers myset</code></pre></div>
+<h3 id="scard">scard</h3>
+<ul>
+  <li>cardinal number 멤버 갯수</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">scard &lt;key&gt; 
+ex<span class="o">)</span> scard myset</code></pre></div>
+<h3 id="srem">srem</h3>
+<ul>
+  <li>Remove 멤버 지우기</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">srem &lt;key&gt; &lt;value&gt;
+ex<span class="o">)</span> srem myset</code></pre></div>
+<h3 id="sismember">sismember</h3>
+<ul>
+  <li>맴버 인지 확인</li>
+  <li>return값은 integer인데 (1-&gt; True, 0-&gt; False)</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sismember &lt;key&gt; &lt;value&gt;
+ex<span class="o">)</span> sismember myset <span class="s2">&quot;Hello&quot;</span></code></pre></div>
+<h3 id="sunion">sunion</h3>
+<ul>
+  <li>set끼리 합집합</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sunion &lt;key1&gt; &lt;key2&gt;
+ex<span class="o">)</span> sunion key1 key2</code></pre></div>
+<h3 id="sinter">sinter</h3>
+<ul>
+  <li>set끼리 교집합</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sinter &lt;key1&gt; &lt;key2&gt;
+ex<span class="o">)</span> sinter key1 key2</code></pre></div>
+<h3 id="sdiff">sdiff</h3>
+<ul>
+  <li>set끼리 차집합</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">sdiff &lt;key1&gt; &lt;key2&gt;
+ex<span class="o">)</span> sdiff key1 key2
+    sdiff key2 key1</code></pre></div>
+<h2 id="sorted-set">Sorted Set</h2>
+<ul>
+  <li>각 value에 Score가 추가된 Set</li>
+  <li>Value들이 Score 순서로 정렬 되어 있음</li>
+  <li>범위 검색 가능</li>
+  <li>가장 작거나 큰 Score 값의 value 검색 가능</li>
+</ul>
+<h3 id="zadd">ZADD</h3>
+<ul>
+  <li>원소 입력</li>
+  <li>score - 정렬 기준</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ZADD &lt;key&gt; &lt;score&gt; &lt;value&gt;
+ex<span class="o">)</span> 
+ZADD myzset <span class="m">1</span> <span class="s2">&quot;one&quot;</span>
+ZADD myzset <span class="m">1</span> <span class="s2">&quot;uno&quot;</span> 
+ZADD myzset <span class="m">2</span> <span class="s2">&quot;two&quot;</span> <span class="m">3</span> <span class="s2">&quot;three&quot;</span></code></pre></div>
+<h3 id="zrange">ZRANGE</h3>
+<ul>
+  <li>범위 검색</li>
+  <li>WITHSCORES - SCORES 같이 표시하라.</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ZRANGE &lt;key&gt; &lt;범위1&gt; &lt;범위2&gt; WITHSCORES
+ex<span class="o">)</span>
+ZRANGE myzset <span class="m">0</span> -1 WITHSCORES</code></pre></div>
+<h3 id="zrank">ZRANK</h3>
+<ul>
+  <li>랭크 검식 (주의 - 0부터 시작)</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ZRANK &lt;key&gt; &lt;value&gt;
+ex<span class="o">)</span> 
+ZRANK myzset <span class="s2">&quot;two&quot;</span>
+ZRANK myzset <span class="s2">&quot;one&quot;</span></code></pre></div>
+<h3 id="zscore">ZSCORE</h3>
+<ul>
+  <li>Score 값 확인</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ZSCORE &lt;key&gt; &lt;value&gt;
+ex<span class="o">)</span> 
+ZSCORE myzset <span class="s2">&quot;two&quot;</span>
+ZSCORE myzset <span class="s2">&quot;one&quot;</span></code></pre></div>
+<h2 id="hash">Hash</h2>
+<ul>
+  <li>Field와 String의 쌍으로 이루어진 저장 구조</li>
+  <li>Java 의 HashMap과 비슷</li>
+  <li>최대 약 42억개 까지 저장</li>
+</ul>
+<h3 id="hmset">HMSET</h3>
+<ul>
+  <li>Hash multi Set</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">HMSET &lt;key&gt; &lt;field1&gt; &lt;value1&gt; &lt;field2&gt; &lt;value2&gt; 
+ex<span class="o">)</span> 
+HMSET myhash field1 <span class="s2">&quot;Hello&quot;</span> field2 <span class="s2">&quot;World&quot;</span>
+HMSET myhash field3 <span class="s2">&quot;12345&quot;</span></code></pre></div>
+<h3 id="hget">HGET</h3>
+<ul>
+  <li>Hash get</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">HGET &lt;key&gt; &lt;filed&gt;
+ex<span class="o">)</span> HGET myhash field1</code></pre></div>
+<h3 id="hkeys">HKEYS</h3>
+<ul>
+  <li>Hash에 key 출력</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">HKEYS &lt;key&gt; 
+ex<span class="o">)</span> HKEYS myhash</code></pre></div>
+<h3 id="hvals">HVALS</h3>
+<ul>
+  <li>Hash에 values 출력</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">HVALS &lt;key&gt; 
+ex<span class="o">)</span> HVALS myhash</code></pre></div>
+<h3 id="hdel">HDEL</h3>
+<ul>
+  <li>Hash 의 key 삭제</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">HDEL &lt;key&gt; &lt;filed&gt;
+ex<span class="o">)</span> HDEL myhash field1</code></pre></div>
+<h3 id="hget-1">HGET</h3>
+<ul>
+  <li>Hash 의 key 출력</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">HGET &lt;<span class="nb">hash</span>&gt; &lt;key&gt;
+ex<span class="o">)</span> HGET myhash field1</code></pre></div>
+<h3 id="hincrby">HINCRBY</h3>
+<ul>
+  <li>지정된 값 증가</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">HINCRBY &lt;key&gt; &lt;filed&gt; &lt;incremet&gt;
+ex<span class="o">)</span> HINCRBY myhash field3 2</code></pre></div>
+<h2 id="list">List</h2>
+<ul>
+  <li>List의 앞과 뒤에 데이터를 넣고 뺄 수 있음 (push/pop)</li>
+  <li>지정된 위치에서도 데이터를 넢고 뺄 수 있다</li>
+</ul>
+<h3 id="lpush">LPUSH</h3>
+<ul>
+  <li>Left Push</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">LPUSH &lt;key&gt; &lt;value&gt; 
+ex<span class="o">)</span> 
+LPUSH mylist <span class="s2">&quot;world&quot;</span>
+LPUSH mylist <span class="s2">&quot;hello&quot;</span></code></pre></div>
+<h3 id="rpush">RPUSH</h3>
+<ul>
+  <li>Right push</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">RPUSH &lt;key&gt; &lt;value&gt; 
+ex<span class="o">)</span> 
+RPUSH mylist <span class="s2">&quot;one&quot;</span>
+RPUSH mylist <span class="s2">&quot;two&quot;</span></code></pre></div>
+<h3 id="lpop">LPOP</h3>
+<ul>
+  <li>Left Pop</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">LPOP &lt;key&gt;
+ex<span class="o">)</span> LPOP mylist</code></pre></div>
+<h3 id="rpop">RPOP</h3>
+<ul>
+  <li>Right Pop</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">RPOP &lt;key&gt;
+RPOP mylist</code></pre></div>
+<h3 id="lrange">LRANGE</h3>
+<ul>
+  <li>Range 출력</li>
+  <li>전체 출력(시작(0) - 끝(-1))</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">LRANGE &lt;key&gt; &lt;start&gt; &lt;stop&gt;
+ex<span class="o">)</span> LRANGE mylist <span class="m">0</span> -1</code></pre></div>
+<h3 id="linsert">LINSERT</h3>
+<ul>
+  <li>특정 위치 기준으로 Insert</li>
+  <li>pivot은 기준 값</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">LINSERT &lt;key&gt; &lt;BEFORE<span class="p">|</span>AFTER&gt; &lt;pivot&gt; &lt;value&gt;
+ex<span class="o">)</span> LINSERT mylist BEFORE <span class="s2">&quot;one&quot;</span> <span class="s2">&quot;zero&quot;</span></code></pre></div>
+<h3 id="lset">LSET</h3>
+<ul>
+  <li>특정 인덱스에 Insert</li>
+</ul>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">LSET &lt;key&gt; &lt;index&gt; &lt;value&gt;
+ex<span class="o">)</span> LSET mylist <span class="m">0</span> <span class="s2">&quot;minus_one&quot;</span></code></pre></div>
+  <footer class="post-footer">
+    <section class="author">
+      <h4>Ryoo Gyoung-Yoon</h4>
+      <p>Personal Tech Blog</p>
+    </section>
+<aside class="share">
+  <h4>Share this.</h4>
+  <a href="http://twitter.com/share?text=Redis&amp;url=http://rky0930.github.io/a-Redis/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+  onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter-square"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://rky0930.github.io/a-Redis/"
+  onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook-square"></i>
+  </a>
+</aside>
+      <hr>
+<aside id="comments" class="disqus">
+  <h3 class="txt-center"><i class="fa fa-comments"></i> Comments</h3>
+  <hr>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_identifier = '/a-Redis';
+    var disqus_title = 'Redis';
+    var disqus_url = 'http://rky0930.github.io/a-Redis/';
+    /*var disqus_developer = 1;*/
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+  </noscript>
+</aside>
+  </footer>
+</article>
+    </main>
+<footer class="footer">
+  <div class="container">
+    <ul class="icons">
+      <li>
+        <a href="http://github.com/rky0930" class="icon-github" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a href="http://facebook.com/rky0930" class="icon-facebook" target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a href="http://linkedin.com/in/rky0930" class="icon-linkedin" target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    </ul>
+    <p>
+      <q></q>
+      <small>– </small>
+    </p>
+    <small class="clearfix">
+      Made with <a href="http://jekyllrb.com" target="_blank">Jekyll</a> • <a href="https://github.com/rky0930" target="_blank">Open source <i class="fa fa-heart"></i></a>
+    </small>
+  </div>
+</footer>
+<a class="scroll-up fa fa-chevron-up bounce" href="#" data-position="0"></a>
+<div id="modalSearch" class="modal">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <a href="#!" class="modal-close" data-modal-close>&times;</a>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search in 10 articles">
+      <ul id="results-container"></ul>
+    </div>
+  </div>
+</div>
+    <script src="/assets/main-52d417e8a6ff9f5b168386d37c96338a.js"></script>
+  </body>
+</html>
