@@ -9,6 +9,14 @@
     } ,
   
     {
+      "title"    : "Unix | pthread",
+      "category" : "pthread",
+      "tags"     : "Unix, pthread",
+      "url"      : "/a-pthread/",
+      "date"     : "2017-07-08 05:26:00 +0900"
+    } ,
+  
+    {
       "title"    : "sklearn",
       "category" : "sklearn",
       "tags"     : "sklearn",
@@ -37,14 +45,6 @@
       "category" : "intro to neural networks",
       "tags"     : "Intro to Neural Networks",
       "url"      : "/a-Neural%20_Network_Intro_Neural_Network/",
-      "date"     : "2017-05-07 10:45:00 +0900"
-    } ,
-  
-    {
-      "title"    : "Neural Networks  1 - 9 | Implementing Backpropagation",
-      "category" : "implementing backpropagation",
-      "tags"     : "Implementing Backpropagation",
-      "url"      : "/a-Neural%20_Network_Implementing_Backpropagation/",
       "date"     : "2017-05-07 10:45:00 +0900"
     } ,
   

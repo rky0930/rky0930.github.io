@@ -5,8 +5,8 @@
     <description></description>
     <link>http://rky0930.github.io/</link>
     <atom:link href="http://rky0930.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 03 Jul 2017 00:35:06 +0900</pubDate>
-    <lastBuildDate>Mon, 03 Jul 2017 00:35:06 +0900</lastBuildDate>
+    <pubDate>Wed, 12 Jul 2017 01:58:27 +0900</pubDate>
+    <lastBuildDate>Wed, 12 Jul 2017 01:58:27 +0900</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
@@ -20,6 +20,20 @@
         
         
         <category>ai</category>
+        
+      </item>
+    
+      <item>
+        <title>Unix | pthread</title>
+        <description>&lt;p&gt;&lt;em&gt;이 포스트는 &lt;a href=&quot;https://classroom.udacity.com/courses/ud923&quot;&gt;Udacity - Introduction to Operating Systems&lt;/a&gt;를 강의 내용을 필기 형식으로 작성 했습니다.&lt;/em&gt;&lt;/p&gt; &lt;h3 id=&quot;what-is-pthread-&quot;&gt;What is Pthread ?&lt;/h3&gt; &lt;p&gt;&lt;a href=&quot;https://ko.wikipedia.org/wiki/POSIX_%EC%8A%A4%EB%A0%88%EB%93%9C&quot;&gt;POSIX 스레드&lt;/a&gt;(POSIX Threads, 약어: PThread)는 병렬적으로 작동하는 소프트웨어의 작성을 위해서 제공되는 표준 API다.&lt;/p&gt; &lt;p&gt;&lt;br /&gt;&lt;/p&gt; &lt;h3 id=&quot;thread-struct&quot;&gt;Thread struct&lt;/h3&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;kt&quot;&gt;pthread_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aThread&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// type of Thread&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt; &lt;h3 id=&quot;pthread-attributes-pthreadattrt&quot;&gt;pthread Attributes (pthread_attr_t)&lt;/h3&gt; &lt;ul&gt; &lt;li&gt;pthread_create 안에 명시 하여 pthread 설정하도록 함&lt;/li&gt; &lt;li&gt;pthread_create 안에 NULL로 보낼시 default 값으로 설정 됨&lt;/li&gt; &lt;li&gt;새로운 쓰레드에 특징을 명시 한다 특징들: &lt;ul&gt; &lt;li&gt;stack size&lt;/li&gt; &lt;li&gt;inheritance&lt;/li&gt; &lt;li&gt;joinable&lt;/li&gt; &lt;li&gt;scheduling policy&lt;/li&gt; &lt;li&gt;priority&lt;/li&gt; &lt;li&gt;system / process scope&lt;/li&gt; &lt;/ul&gt; &lt;/li&gt; &lt;/ul&gt; &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c--&quot; data-lang=&quot;c++&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// initialize pthread...</description>
+        <pubDate>Sat, 08 Jul 2017 05:26:00 +0900</pubDate>
+        <link>http://rky0930.github.io/a-pthread/</link>
+        <guid isPermaLink="true">http://rky0930.github.io/a-pthread/</guid>
+        
+        <category>Unix, pthread</category>
+        
+        
+        <category>pthread</category>
         
       </item>
     
@@ -76,27 +90,6 @@
         
         
         <category>intro to neural networks</category>
-        
-      </item>
-    
-      <item>
-        <title>Neural Networks  1 - 9 | Implementing Backpropagation</title>
-        <description>&lt;h1 id=&quot;implementing-backpropagation&quot;&gt;Implementing Backpropagation&lt;/h1&gt;
-&lt;!--원칙 데이터 셋 만 가져다 쓴다--&gt;
-
-&lt;p&gt;[[[]]]&lt;/p&gt;
-
-&lt;h1 id=&quot;full-source-code&quot;&gt;Full Source Code&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/rky0930/AI&quot;&gt;Full Source Code&lt;/a&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 07 May 2017 10:45:00 +0900</pubDate>
-        <link>http://rky0930.github.io/a-Neural%20_Network_Implementing_Backpropagation/</link>
-        <guid isPermaLink="true">http://rky0930.github.io/a-Neural%20_Network_Implementing_Backpropagation/</guid>
-        
-        <category>Implementing Backpropagation</category>
-        
-        
-        <category>implementing backpropagation</category>
         
       </item>
     

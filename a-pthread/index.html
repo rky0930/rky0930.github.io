@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+  <head>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="alternate" href="http://rky0930.github.io" hreflang="pt-BR">
+<link href="http://gmpg.org/xfn/11" rel="profile">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="theme-color" content="#005344">
+<title> Unix | pthread | Ryoo Gyoung-Yoon</title>
+<meta name="google-site-verification" content="zS1dSn20XtA4FJYEOQLXqI0boxZdMnJ2g3beje-cl20">
+<meta name="description" content="pthread">
+<meta name="keywords" content="">
+<!-- Social: Facebook / Open Graph -->
+<meta property="og:url" content="http://rky0930.github.io/a-pthread/">
+<meta property="og:title" content=" Unix | pthread | Ryoo Gyoung-Yoon">
+<meta property="og:description" content="pthread">
+<meta property="og:site_name" content="Ryoo Gyoung-Yoon">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:type" content="website">
+<meta property="og:author" content="http://facebook.com/rky0930">
+<meta property="og:image" content="http://rky0930.github.io">
+<!-- Social: Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nandomoreirame">
+<meta name="twitter:domain" content="http://rky0930.github.io">
+<meta name="twitter:title" content=" Unix | pthread | Ryoo Gyoung-Yoon">
+<meta name="twitter:description" content="pthread">
+<meta name="twitter:image:src" content="http://rky0930.github.io">
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="114x114" href="http://rky0930.github.io/assets/ico/apple-touch-icon-114-516f4e19976b9e4dbb77ad9b576831fe.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://rky0930.github.io/assets/ico/apple-touch-icon-72-5409b2df229305703caf583d86c845ab.png">
+<link rel="apple-touch-icon" href="http://rky0930.github.io/assets/ico/apple-touch-icon-57-aa873e019cf659e0d4e6a0b5bb9f379d.png">
+<link rel="shortcut icon" href="http://rky0930.github.io/assets/ico/favicon-b5ecc36e2f9d7bd353ee91851eb81a94.png">
+<!-- rel prev and next -->
+<!-- Canonical link tag -->
+<link rel="canonical" href="http://rky0930.github.io/a-pthread/">
+<link rel="alternate" type="application/rss+xml" title="Ryoo Gyoung-Yoon" href="http://rky0930.github.io/feed.xml">
+<link rel="stylesheet" href="/assets/main-e03fd29918e6a55fb4e40f4e044772fc.css">
+<script src="/assets/modernizr-custom-cb807611a3e262b2eac59444cbab74d6.js" data-cfasync="false"></script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Website",
+  "publisher": "rky0930.github.io",
+  "url": "http://rky0930.github.io/",
+  "description": ""
+}
+</script>
+<script type="text/javascript">
+  var disqus_shortname = 'tech blog',
+      baseurl          = '';
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', '']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+    <meta name="robots" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+    <meta name="googlebot" content="noindex"> <!--=====  Please remove it ! ! !  ======-->
+  </head>
+  <body class="post-template single">
+    <header class="header">
+  <div class="container">
+    <h1><a href="/"><strong>rky0930</strong>.github.io</a></h1>
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="#!" data-modal="modalSearch"><i class="fa fa-search"></i></a></li>
+        <!--<li><a href="/feed.xml" target="_blank"><i class="fa fa-feed"></i></a></li>-->
+      </ul>
+    </nav>
+  </div>
+</header>
+    <main class="wrapper container" itemprop="mainContentOfPage" itemscope="itemscope" itemtype="http://schema.org/Blog">
+      <article class="post" itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+  <header class="post-header">
+    <h1>Unix | pthread</h1>
+    <div class="post-meta">
+      <time datetime="2015-10-13">
+        <i class="fa fa-calendar-o"></i> <time datetime="2017-07-08"> 2017-07-08
+      </time>
+      <span>
+        <i class="fa fa-comments"></i> <a href="/a-pthread/#disqus_thread" data-disqus-identifier="/a-pthread">Leave a comment</a>
+      </span>
+      <span>
+        <i class="fa fa-folder-open-o"></i> 
+      </span>
+    </div>
+  </header>
+  <p><em>이 포스트는 <a href="https://classroom.udacity.com/courses/ud923">Udacity - Introduction to Operating Systems</a>를 강의 내용을 필기 형식으로 작성 했습니다.</em></p>
+<h3 id="what-is-pthread-">What is Pthread ?</h3>
+<p><a href="https://ko.wikipedia.org/wiki/POSIX_%EC%8A%A4%EB%A0%88%EB%93%9C">POSIX 스레드</a>(POSIX Threads, 약어: PThread)는 병렬적으로 작동하는 소프트웨어의 작성을 위해서 제공되는 표준 API다.</p>
+<p><br /></p>
+<h3 id="thread-struct">Thread struct</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">pthread_t</span> <span class="n">aThread</span><span class="p">;</span> <span class="c1">// type of Thread</span></code></pre></div>
+<h3 id="pthread-attributes-pthreadattrt">pthread Attributes (pthread_attr_t)</h3>
+<ul>
+  <li>pthread_create 안에 명시 하여 pthread 설정하도록 함</li>
+  <li>pthread_create 안에 NULL로 보낼시 default 값으로 설정 됨</li>
+  <li>새로운 쓰레드에 특징을 명시 한다
+특징들:
+    <ul>
+      <li>stack size</li>
+      <li>inheritance</li>
+      <li>joinable</li>
+      <li>scheduling policy</li>
+      <li>priority</li>
+      <li>system / process scope</li>
+    </ul>
+  </li>
+</ul>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="c1">// initialize pthread attribute structure </span>
+<span class="kt">int</span> <span class="nf">pthread_attr_init</span><span class="p">(</span><span class="kt">pthread_attr_t</span> <span class="o">*</span><span class="n">attr</span><span class="p">);</span>  
+<span class="c1">// destroy and free pthread attribute structure from memory</span>
+<span class="kt">int</span> <span class="nf">pthread_attr_destroy</span><span class="p">(</span><span class="kt">pthread_attr_t</span> <span class="o">*</span><span class="n">attr</span><span class="p">);</span>  
+<span class="c1">// set or get value. </span>
+<span class="c1">//ex) int pthread_attr_{set/get}{attribute}  </span>
+<span class="kt">int</span> <span class="nf">pthread_attr_setdetachstate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attr</span><span class="p">,</span> <span class="n">PTHREAD_CREATE_DETACHED</span><span class="p">);</span>  
+<span class="c1">// detach 관련 설정 </span>
+<span class="kt">int</span> <span class="nf">pthread_attr_setscope</span><span class="p">(</span><span class="o">&amp;</span><span class="n">attr</span><span class="p">,</span> <span class="n">PTHREAD_SCOPE_SYSTEM</span><span class="p">);</span>           
+<span class="c1">// scope 관련 설정, resource sharing scope 를 system scope로 변경</span>
+<span class="c1">// (system의 모든 thread와 자원을 균등하게 사용 하겠다는 설정)</span></code></pre></div>
+<h3 id="thread-createtion">Thread createtion</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">int</span> <span class="nf">pthread_create</span> <span class="p">(</span><span class="kt">pthread_t</span> <span class="o">*</span><span class="kr">thread</span><span class="p">,</span> <span class="k">const</span> <span class="kt">pthread_attr_t</span> <span class="o">*</span><span class="n">attr</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">),</span> <span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">));</span> 
+ <span class="c1">//return 값은 create 함수 실행 결과</span></code></pre></div>
+<h3 id="thread-join">Thread Join</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">int</span> <span class="nf">pthread_join</span><span class="p">(</span><span class="kt">pthread_t</span> <span class="kr">thread</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">status</span><span class="p">);</span> 
+<span class="c1">// void **status &lt;- 연관된 Thread 상태 값 반환 </span>
+<span class="c1">// return 값은 join 함수 실행 결과</span></code></pre></div>
+<h3 id="compiling-pthread">Compiling PThread</h3>
+<p>1) include header file in main file.</p>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &lt;pthread.h&gt;</span></code></pre></div>
+<p>2) Compile source with -lpthread or pthread</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">gcc -o main main.c -lpthread
+gcc -o main main.c -pthread</code></pre></div>
+<h3 id="detaching-pthread">Detaching PThread</h3>
+<p>Default: joinable threads<br />
+ - Detach 하지 않고 부모 thread 가 자식thread 보다 먼저 exit 하면 자식thread는 좀비가 됨.<br />
+ - Detach 시키면 부모thread 가 exit 해도 자식thread는 계속 동작<br />
+ - 한번 Detach되면 다시 join할 수 없음</p>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">int</span> <span class="nf">pthread_detach</span><span class="p">();</span>
+<span class="n">pthread_attr_setdetachstate</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">PTHREAD_CREATE_DETACH</span><span class="p">);</span>
+<span class="c1">// ... </span>
+<span class="n">pthread_create</span><span class="p">(....,</span> <span class="n">attr</span><span class="p">,</span> <span class="p">....);</span>
+<span class="kt">void</span> <span class="nf">phread_exit</span><span class="p">();</span></code></pre></div>
+<h3 id="pthread-mutexes">PThread Mutexes</h3>
+<p>“to solve mutual exclusion problems among concurrent trheads”</p>
+<h3 id="mutex-">mutex 구조체</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">pthread_mutex_t</span> <span class="n">aMutex</span><span class="p">;</span> <span class="c1">// mutex type</span>
+<span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="kt">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>  <span class="c1">// explicit lock</span>
+<span class="kt">int</span> <span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="kt">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>  <span class="c1">// explicit unlock</span></code></pre></div>
+<h3 id="section">사용 예)</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">my_list</span><span class="p">;</span> 
+<span class="kt">pthread_mutex_t</span> <span class="n">m</span><span class="p">;</span> 
+<span class="kt">void</span> <span class="nf">safe_insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">pthread_mutex_lock</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+    <span class="n">my_list</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">pthread_mutex_unlock</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+<h3 id="other-mutex-operation">other mutex operation</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">int</span> <span class="nf">pthread_mutex_init</span><span class="p">(</span><span class="kt">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">,</span> <span class="k">const</span> <span class="kt">pthread_mutexattr_t</span> <span class="o">*</span><span class="n">attr</span><span class="p">);</span>
+ <span class="c1">// mutex attribute : 프로세스 사이에서 공유될때 mutex 행동 설정 </span>
+<span class="kt">int</span> <span class="nf">pthread_mutex_trylock</span><span class="p">(</span><span class="kt">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span> 
+ <span class="c1">// mutex lock 가능한지 확인 하는 기능 </span>
+<span class="kt">int</span> <span class="nf">pthread_mutex_destroy</span><span class="p">(</span><span class="kt">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span> 
+ <span class="c1">// mutex 삭제</span>
+<span class="p">...</span> <span class="n">many</span> <span class="n">othrers</span> <span class="p">...</span></code></pre></div>
+<h3 id="pthread-condition-variable">pthread condition variable</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="o">-</span> <span class="n">condition</span> 
+  <span class="n">ex</span><span class="p">)</span> <span class="kt">pthread_cond_t</span> <span class="n">aCond</span><span class="p">;</span>  <span class="c1">// type of cond variable</span>
+ <span class="o">-</span> <span class="nl">wait</span>
+ <span class="p">:</span> <span class="err">기다리다가</span> <span class="n">mutex</span><span class="err">가</span> <span class="n">release</span><span class="err">되면</span> <span class="n">mutex</span><span class="err">획득</span> 
+  <span class="n">ex</span><span class="p">)</span> <span class="kt">int</span> <span class="n">pthread_cond_wait</span><span class="p">(</span><span class="kt">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="kt">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+ <span class="o">-</span> <span class="nl">signal</span>
+ <span class="p">:</span> <span class="n">wait</span> <span class="err">중인</span> <span class="err">쓰레드에게</span> <span class="err">신호</span> <span class="err">보냄</span>
+  <span class="n">ex</span><span class="p">)</span> <span class="kt">int</span> <span class="n">pthread_cond_signal</span><span class="p">(</span><span class="kt">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+ <span class="o">-</span> <span class="nl">broadcast</span>
+ <span class="p">:</span> <span class="err">전체</span> <span class="err">쓰레드에</span> <span class="err">신호</span> <span class="err">보냄</span> 
+  <span class="n">ex</span><span class="p">)</span> <span class="kt">int</span> <span class="n">pthread_cond_broadcast</span><span class="p">(</span><span class="kt">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span></code></pre></div>
+<h3 id="other-condition-variable-operations">Other condition variable operations</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="kt">int</span> <span class="nf">pthread_cond_init</span><span class="p">(</span><span class="kt">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">,</span> <span class="k">const</span> <span class="kt">pthread_condattr_t</span> <span class="o">*</span><span class="n">attr</span><span class="p">);</span>
+<span class="c1">// attributes -- e.g., if it&#39;s shared</span>
+<span class="c1">// attr = null  // default behavior</span>
+<span class="c1">// further specifiy behavior </span>
+<span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="kt">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>
+<span class="c1">// condition variabl 제거</span></code></pre></div>
+<p><br /></p>
+<h3 id="create-pthread-without-parameter">Create pthread without parameter</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cm">/* PThread Creation Quiz 1 */</span> 
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;pthread.h&gt;</span>
+<span class="cp">#define NUM_THREADS 4</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">hello</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* thread main */</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello Thread</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">pthread_t</span> <span class="n">tid</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* create/fork threads */</span>
+        <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">hello</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>  <span class="c1">// Null &lt;- without parameter</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* wait/join threads */</span>
+        <span class="n">pthread_join</span><span class="p">(</span><span class="n">tid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*</span>
+<span class="cm">output result:</span>
+<span class="cm">Hello Thread</span>
+<span class="cm">Hello Thread</span>
+<span class="cm">Hello Thread</span>
+<span class="cm">Hello Thread</span>
+<span class="cm">*/</span></code></pre></div>
+<p><br /></p>
+<h3 id="create-pthread-with-parameter">Create pthread with parameter</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cm">/* PThread Creation Quiz 3 */</span> 
+<span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;pthread.h&gt;</span>
+<span class="cp">#define NUM_THREADS 4</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">threadFunc</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">pArg</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* thread main */</span>
+    <span class="kt">int</span> <span class="n">myNum</span> <span class="o">=</span> <span class="o">*</span><span class="p">((</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">pArg</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Thread number %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">myNum</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">tNum</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span>
+    <span class="kt">pthread_t</span> <span class="n">tid</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span> <span class="c1">// pthread_t 생성 </span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* create/fork threads */</span>
+        <span class="n">tNum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>  <span class="c1">// paramter 넘기기 </span>
+        <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">threadFunc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tNum</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span> <span class="c1">// &lt;--  &amp;tNum[i] is parameter</span>
+        <span class="c1">// pthread create </span>
+    <span class="p">}</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* wait/join threads */</span>
+        <span class="n">pthread_join</span><span class="p">(</span><span class="n">tid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*</span>
+<span class="cm">output result:</span>
+<span class="cm">Thread number 0</span>
+<span class="cm">Thread number 1</span>
+<span class="cm">Thread number 2</span>
+<span class="cm">Thread number 3</span>
+<span class="cm">*/</span></code></pre></div>
+<p><br /></p>
+<h3 id="producer--consumer">Producer &amp; Consumer</h3>
+<div class="highlight"><pre><code class="language-c--" data-lang="c++"><span class="cp">#include &lt;stdio.h&gt;</span>
+<span class="cp">#include &lt;stdlib.h&gt;</span>
+<span class="cp">#include &lt;pthread.h&gt;</span>
+<span class="cp">#define BUF_SIZE 3        </span><span class="cm">/* Size of shared buffer */</span><span class="cp"></span>
+<span class="kt">int</span> <span class="n">buffer</span><span class="p">[</span><span class="n">BUF_SIZE</span><span class="p">];</span>      <span class="cm">/* shared buffer */</span>
+<span class="kt">int</span> <span class="n">add</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>              <span class="cm">/* place to add next element */</span>
+<span class="kt">int</span> <span class="n">rem</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>              <span class="cm">/* place to remove next element */</span>
+<span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>              <span class="cm">/* number elements in buffer */</span>
+<span class="kt">pthread_mutex_t</span> <span class="n">m</span> <span class="o">=</span> <span class="n">PTHREAD_MUTEX_INITIALIZER</span><span class="p">;</span>      <span class="cm">/* mutex lock for buffer */</span>
+<span class="kt">pthread_cond_t</span> <span class="n">c_cons</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span> <span class="cm">/* consumer waits on this cond var */</span>
+<span class="kt">pthread_cond_t</span> <span class="n">c_prod</span> <span class="o">=</span> <span class="n">PTHREAD_COND_INITIALIZER</span><span class="p">;</span> <span class="cm">/* producer waits on this cond var */</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">producer</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">);</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">consumer</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">);</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">pthread_t</span> <span class="n">tid1</span><span class="p">,</span> <span class="n">tid2</span><span class="p">;</span>  <span class="cm">/* thread identifiers */</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="cm">/* create the threads; may be any number, in general */</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">producer</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Unable to create producer thread</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tid2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">consumer</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">&quot;Unable to create consumer thread</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="cm">/* wait for created thread to exit */</span>
+    <span class="n">pthread_join</span><span class="p">(</span><span class="n">tid1</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">pthread_join</span><span class="p">(</span><span class="n">tid2</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Parent quiting</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/* Produce value(s) */</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">producer</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">20</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/* Insert into buffer */</span>
+        <span class="n">pthread_mutex_lock</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>    
+            <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&gt;</span> <span class="n">BUF_SIZE</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>  <span class="cm">/* overflow */</span>
+            <span class="p">}</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="n">BUF_SIZE</span><span class="p">)</span> <span class="p">{</span>  <span class="cm">/* block if buffer is full */</span>
+                <span class="n">pthread_cond_wait</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">c_prod</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="cm">/* if executing here, buffer not full so add element */</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">add</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="n">add</span> <span class="o">=</span> <span class="p">(</span><span class="n">add</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">BUF_SIZE</span><span class="p">;</span>
+            <span class="n">num</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">pthread_mutex_unlock</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+        <span class="n">pthread_cond_signal</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">c_cons</span><span class="p">);</span>
+        <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;producer: inserted %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+        <span class="n">fflush</span> <span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;producer quiting</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/* Consume value(s); Note the consumer never terminates */</span>
+<span class="kt">void</span> <span class="o">*</span><span class="nf">consumer</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pthread_mutex_lock</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">num</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+            <span class="p">}</span> <span class="cm">/* underflow */</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>  <span class="cm">/* block if buffer empty */</span>
+                <span class="n">pthread_cond_wait</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">c_cons</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="cm">/* if executing here, buffer not empty so remove element */</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">buffer</span><span class="p">[</span><span class="n">rem</span><span class="p">];</span>
+            <span class="n">rem</span> <span class="o">=</span> <span class="p">(</span><span class="n">rem</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">BUF_SIZE</span><span class="p">;</span>
+            <span class="n">num</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">pthread_mutex_unlock</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+        <span class="n">pthread_cond_signal</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">c_prod</span><span class="p">);</span>
+        <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;Consume value %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>  <span class="n">fflush</span><span class="p">(</span><span class="n">stdout</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cm">/*</span>
+<span class="cm">output result: </span>
+<span class="cm">producer: inserted 1</span>
+<span class="cm">Consume value 1</span>
+<span class="cm">producer: inserted 2</span>
+<span class="cm">Consume value 2</span>
+<span class="cm">producer: inserted 3</span>
+<span class="cm">Consume value 3</span>
+<span class="cm">... </span>
+<span class="cm">...</span>
+<span class="cm">producer: inserted 18</span>
+<span class="cm">Consume value 18</span>
+<span class="cm">producer: inserted 19</span>
+<span class="cm">Consume value 19</span>
+<span class="cm">producer: inserted 20</span>
+<span class="cm">Consume value 20</span>
+<span class="cm">producer quiting</span>
+<span class="cm">프로세스는 종료 되지 않은 상태로 유지 (이유: consumer가 무한 루프이고 main에 join되어 있기 때문)</span>
+<span class="cm">*/</span></code></pre></div>
+  <footer class="post-footer">
+    <section class="author">
+      <h4>Ryoo Gyoung-Yoon</h4>
+      <p>Personal Tech Blog</p>
+    </section>
+<aside class="share">
+  <h4>Share this.</h4>
+  <a href="http://twitter.com/share?text=Unix | pthread&amp;url=http://rky0930.github.io/a-pthread/&amp;hashtags=web,dev,blog,soudev&amp;via=nandomoreirame"
+  onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+    <i class="fa fa-twitter-square"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://rky0930.github.io/a-pthread/"
+  onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+    <i class="fa fa-facebook-square"></i>
+  </a>
+</aside>
+      <hr>
+<aside id="comments" class="disqus">
+  <h3 class="txt-center"><i class="fa fa-comments"></i> Comments</h3>
+  <hr>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_identifier = '/a-pthread';
+    var disqus_title = 'Unix | pthread';
+    var disqus_url = 'http://rky0930.github.io/a-pthread/';
+    /*var disqus_developer = 1;*/
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+  </noscript>
+</aside>
+  </footer>
+</article>
+    </main>
+<footer class="footer">
+  <div class="container">
+    <ul class="icons">
+      <li>
+        <a href="http://github.com/rky0930" class="icon-github" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a href="http://facebook.com/rky0930" class="icon-facebook" target="_blank">
+          <i class="fa fa-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a href="http://linkedin.com/in/rky0930" class="icon-linkedin" target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    </ul>
+    <p>
+      <q></q>
+      <small>– </small>
+    </p>
+    <small class="clearfix">
+      Made with <a href="http://jekyllrb.com" target="_blank">Jekyll</a> • <a href="https://github.com/rky0930" target="_blank">Open source <i class="fa fa-heart"></i></a>
+    </small>
+  </div>
+</footer>
+<a class="scroll-up fa fa-chevron-up bounce" href="#" data-position="0"></a>
+<div id="modalSearch" class="modal">
+  <div class="modal__overlay"></div>
+  <div class="modal__content">
+    <a href="#!" class="modal-close" data-modal-close>&times;</a>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Search in 11 articles">
+      <ul id="results-container"></ul>
+    </div>
+  </div>
+</div>
+    <script src="/assets/main-52d417e8a6ff9f5b168386d37c96338a.js"></script>
+  </body>
+</html>
