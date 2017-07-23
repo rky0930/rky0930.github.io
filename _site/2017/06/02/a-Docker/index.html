@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Docker</title>
+	<meta name="description" content="Docker">
+	
+	<link rel="canonical" href="http://localhost:4000/2017/06/02/a-Docker/">
+	<link rel="alternate" type="application/rss+xml" title="rky0930.github.io" href="http://localhost:4000/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+    
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	<script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/monokai_sublime.min.css">
+	<script type="text/javascript" src="/static/js/highlight.min.js"></script>
+
+    <!--
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+    -->
+    
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">rky0930.github.io</a>
+      <p class="navbar-text"></p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+        <a href="/">Home</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/projects/"><span class="glyphicon "></span> Projects</a></li>
+          
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon "></span> About</a></li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>Docker</h1>
+        <p>Jun 2, 2017</p>
+      </header>
+      <hr>
+      <article>
+        <h1 id="docker">Docker</h1>
+
+<h3 id="sudo를-매번-입력하지-않기-위해-docker-그룹에-유저-넣기">sudo를 매번 입력하지 않기 위해 Docker 그룹에 유저 넣기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">sudo usermod -aG docker <span class="k">${</span><span class="nv">USER</span><span class="k">}</span>
+sudo service docker restart</code></pre></figure>
+
+<h3 id="이미지-찾기">이미지 찾기</h3>
+<ul>
+  <li>웹: https://hub.docker.com</li>
+  <li>이름: 공식이미지, 올린사람id/이지미이름</li>
+  <li>Tags: 이미지 변경에 따른 버전 관리</li>
+  <li>최신 Tags가 Latest로 명시됨</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">명령어: docker search &lt;이미지이름&gt;  
+ex<span class="o">)</span> docker search</code></pre></figure>
+
+<h3 id="이미지-다운로드pull">이미지 다운로드(pull)</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker pull &lt;이미지이름&gt;:&lt;태그&gt;
+ex<span class="o">)</span> docker pull redis:Latest
+    redis 최신 이미지 받기<span class="o">(</span>테그 명시 안하면 최신으로 받음<span class="o">)</span></code></pre></figure>
+
+<h3 id="이미지-확인">이미지 확인</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker images</code></pre></figure>
+
+<h3 id="이미지-실행컨테이너-만들기">이미지 실행(컨테이너 만들기)</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -i -t --name &lt;컨테이너이름&gt; -d &lt;이미지이름&gt;
+: -i -t <span class="o">(</span>interative 모드<span class="o">)</span>
+ ex<span class="o">)</span> docker run -i -t --name myredis -d redis</code></pre></figure>
+
+<h3 id="컨테이너-확인">컨테이너 확인</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker ps 
+docker ps -a 
+ : -a <span class="o">(</span>정지된 컨테이너도 표시<span class="o">)</span> </code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="컨테이너-다루기">컨테이너 다루기</h2>
+
+<h3 id="컨테이너-실행--정지">컨테이너 실행 &amp; 정지</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker start &lt;컨테이너이름&gt;
+docker stop &lt;컨테이너이름&gt;</code></pre></figure>
+
+<h3 id="컨테이너-안에서-작업하기">컨테이너 안에서 작업하기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it &lt;컨테이너이름&gt; &lt;실행할 명령&gt;
+: -it <span class="o">(</span>인터랙티브 하게 실행<span class="o">)</span>, bash shell을 사용해라 
+ ex<span class="o">)</span> docker <span class="nb">exec</span> -it myredis /bin/bash</code></pre></figure>
+
+<h3 id="컨테이너-삭제">컨테이너 삭제</h3>
+<ul>
+  <li>tips: 복수 명령도 가능 (한칸 띄고 다른 컨테이너이름)</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker rm &lt;컨테이너 이름&gt;</code></pre></figure>
+
+<h3 id="이미지-삭제">이미지 삭제</h3>
+<ul>
+  <li>Notice: 태그이름 입력안하면 모든 태그 삭제됨</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker rmi &lt;이미지이름&gt;:&lt;태그&gt;</code></pre></figure>
+
+<h3 id="로그">로그</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker logs -ft &lt;컨테이너이름&gt; 
+ -ft: tail </code></pre></figure>
+
+<h2 id="자원-제한-방법">자원 제한 방법</h2>
+
+<h3 id="cpu-제한">CPU 제한</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -ti --c &lt;제한값&gt; &lt;이미지이름&gt; &lt;실행할 명령&gt;
+ex<span class="o">)</span> docker run -ti -c 512 ubuntu:16.04 /bin/bash
+ -c or --cpu-share
+ <span class="k">*</span> 상대적인 비율: 각 컨테이너에 주는 숫자의 합을 비율로 하여 CPU사용 제한 </code></pre></figure>
+
+<h3 id="memory-제한">Memory 제한</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -ti -m &lt;size&gt; &lt;이미지이름&gt; &lt;실행할 명령&gt;
+ex<span class="o">)</span> docker run -ti -m 300M ubuntu:16.04 /bin/bash
+ -m or --memory 
+ <span class="k">*</span> 메모리 제한 값 최소 4M
+ <span class="k">*</span> 별도의 설정이 없다면 swap도 300M <span class="o">(</span>swap+memory<span class="o">)</span> <span class="o">=</span> 600M 
+ <span class="k">*</span> 단위: b, k, m, g
+ </code></pre></figure>
+
+<h3 id="swap-memory-제한">swap memory 제한</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker run -ti -m &lt;size&gt; --memory-swap &lt;size&gt; &lt;이미지이름&gt; &lt;실행할 명령&gt;
+ex<span class="o">)</span> docker run -ti -m 300M --memory-swap 1G ubuntu:16.04 /bin/bash
+ : 메모리 사용량은 <span class="o">(</span>swap+memory<span class="o">)</span> <span class="o">=</span> 1G <span class="o">=</span>&gt; swap memory로 설정된 값은 700M</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="도커-관리를-위한-꿀-팁">도커 관리를 위한 꿀 팁</h2>
+
+<h3 id="실행중인-모든-컨테이너-죽이기">실행중인 모든 컨테이너 죽이기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker <span class="nb">kill</span> <span class="k">$(</span>docker ps -q<span class="k">)</span></code></pre></figure>
+
+<h3 id="정지된-것을-포함해서-모든-컨테이너를-삭제한다">정지된 것을 포함해서, 모든 컨테이너를 삭제한다</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker rm <span class="k">$(</span>docker ps -a -q<span class="k">)</span></code></pre></figure>
+
+<h3 id="오래된-컨테이너-삭제">오래된 컨테이너 삭제</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker ps -a | grep <span class="s1">'weeks ago'</span> | awk <span class="s1">'{print $1}'</span> | xargs docker rm</code></pre></figure>
+
+<h3 id="정지된-컨테이너를-삭제">정지된 컨테이너를 삭제</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker rm -v <span class="k">$(</span>docker ps -a -q -f <span class="nv">status</span><span class="o">=</span>exited<span class="k">)</span></code></pre></figure>
+
+<h3 id="불필요한-이미지를-제거한다">불필요한 이미지를 제거한다</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker rmi <span class="k">$(</span>docekr images -q -f <span class="nv">dangling</span><span class="o">=</span><span class="nb">true</span><span class="k">)</span></code></pre></figure>
+
+<h3 id="불필요한-볼륨을-제거한다">불필요한 볼륨을 제거한다</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker volume rm <span class="k">$(</span>docker volume ls -q <span class="nv">dangling</span><span class="o">=</span><span class="nb">true</span><span class="k">)</span></code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="docker-이미지나-컨테이너를-파일로-저장하는-법">docker 이미지나 컨테이너를 파일로 저장하는 법</h2>
+
+<h3 id="load-or-save-image">load or save image</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ex<span class="o">)</span> docker load &lt; my_image.tar.gz
+ex<span class="o">)</span> docker save my_image:my_tag &gt; my_image.tar.gz</code></pre></figure>
+
+<h3 id="load-or-save-container">load or save Container</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ex<span class="o">)</span> cat my_container.tar.gz | docker import - my_image:my_tag
+ex<span class="o">)</span> docker <span class="nb">export </span>my_container &gt; my_container.tar.gz</code></pre></figure>
+
+<h3 id="read-only-container">Read-only Container</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ex<span class="o">)</span> docker run --read-only</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="컨테이너-모니터링-하기">컨테이너 모니터링 하기</h2>
+
+<h3 id="하나의-컨테이너의-자원-사용량-모니터링cpu-memory-network-io">하나의 컨테이너의 자원 사용량 모니터링(CPU, memory, network I/O)</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker stats &lt;Container&gt; </code></pre></figure>
+
+<h3 id="모든-컨테이너의-자원-사용량-모니터링container-id로-정렬">모든 컨테이너의 자원 사용량 모니터링(Container ID로 정렬)</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker stats <span class="k">$(</span>docker ps -q<span class="k">)</span></code></pre></figure>
+
+<h3 id="모든-컨테이너의-자원-사용량-모니터링container-이름으로-정렬">모든 컨테이너의 자원 사용량 모니터링(Container 이름으로 정렬)</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker stats <span class="k">$(</span>docker ps --format <span class="s1">''</span><span class="k">)</span></code></pre></figure>
+
+<h3 id="ubuntu-이미지로-만들어진-컨테이너-찾기">“ubuntu” 이미지로 만들어진 컨테이너 찾기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker ps -a -f <span class="nv">ancestor</span><span class="o">=</span>ubuntu</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="이미지를-빌드하는-방법">이미지를 빌드하는 방법</h2>
+
+<h3 id="1-docker-commit-명령어">1) docker commit 명령어</h3>
+<p>컨테이너 안에서 작업후 커밋하는 방법</p>
+
+<ul>
+  <li>과정 재현이 어렵고 실수하기 쉬움</li>
+  <li>간단한 컨테이너 만들때 사용</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+-- 우선 실행 -- 
+docker run -it ubuntu /bin/bash
+-- 컨테이너 안에서 작업 --
+apt-get -yqq update
+apt-get -y install apache2
+<span class="nb">exit</span> 
+-- 컨테이너 밖에서 commit--
+docker commit 5a6a75ff3e6a rky0930/apache2
+docker images rky0930/apache2 <span class="o">(</span>이미지 확인<span class="o">)</span>
+docker commit -m<span class="o">=</span><span class="s2">"new apache2 image"</span> --author<span class="o">=</span><span class="s2">"rky0930"</span> 5a6a75ff3e6a rky0930/apache2:webserver
+ : -m 메시지 -author 저자이름 컨테이너ID 이미지이름1/이미지이름2:테그
+docker inspect rky0930/apache2:webserver</code></pre></figure>
+
+<h3 id="2-dockerfile---docker-build-명령">2) Dockerfile - docker build 명령</h3>
+<p>사용할 명령어를 dockerfile에 저장하고 docker build하는 방법</p>
+
+<ul>
+  <li>이미지 빌드 과정을 모두 정리하고 진행</li>
+  <li>관리가 쉽고 실수가 적다</li>
+</ul>
+
+<h3 id="dockerfile-이란-">dockerfile 이란 ?</h3>
+<ul>
+  <li>이미지를 빌드하는 방법과 과정을 적어놓은 파일</li>
+  <li>도커 이미지의 설계도와 같다고 말할 수 있음</li>
+  <li>반복적 사용가능</li>
+  <li>git, svn등으로 버젼관리하면 변경 이력 추적 가능</li>
+</ul>
+
+<h3 id="dockerignore-파일-사용법">.dockerignore 파일 사용법</h3>
+<p>이미지에 포함하고 싶지 않은 파일, 디렉토리를 지정</p>
+
+<ul>
+  <li>Context의 root directory에 위치</li>
+  <li>이미지를 크게 만드는 불필요한 파일</li>
+  <li>보안 때문에 넣으면 안되는 파일</li>
+  <li>각 패턴마다 줄 바꿈</li>
+  <li>’#’ 으로 주석처리</li>
+</ul>
+
+<h3 id="규칙및-동작">규칙및 동작</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+<span class="k">*</span>/temp<span class="k">*</span>   : temp라는 디랙토리 제외
+<span class="k">*</span>/<span class="k">*</span>/temp<span class="k">*</span> : sub-sub 의 temp라는 디랙토리는 제외 
+<span class="k">**</span>/<span class="k">*</span>.java : .java 파일 제외
+temp?     : tempa tempb 등 5글자중 앞에 4글자가 temp 인것은 제외</code></pre></figure>
+
+<h3 id="dockerfile-설명2">dockerfile 설명2</h3>
+<ul>
+  <li>첫 줄부터 차례로 실행</li>
+  <li>한 라인이 실행 될 때 마다 이미지에 레이어 추가</li>
+  <li>실행중 에러가 나면 에러가 났던 곳 부터 실행</li>
+  <li>첫출은 항상 FROM으로 시작</li>
+  <li>’#’ 으로 주석처리</li>
+</ul>
+
+<h3 id="파일로-빌드하기">파일로 빌드하기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+docker build -t <span class="s2">"rky0930/sshd"</span> .</code></pre></figure>
+
+<h3 id="빌드-이력">빌드 이력</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+docker <span class="nb">history </span>rky0930/sshd</code></pre></figure>
+
+<h3 id="컨테이너-만들기">컨테이너 만들기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+docker run -d -P --name test_sshd rky0903/sshd</code></pre></figure>
+
+<h3 id="port-오픈">port 오픈</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+docker port test_sshd 22</code></pre></figure>
+
+<h3 id="ipaddress-확인">IPAddress 확인</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+docker inspect --format <span class="s1">''</span> test_sshd</code></pre></figure>
+
+<h3 id="ssh-접속-주의-포트번호-22-32768">ssh 접속 (주의: 포트번호 22-&gt;32768)</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ssh root@172.17.0.2 -p 32768
+ - 컨테이너에서  22
+ - 컨테이너 외부에서는 32768</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="docker-빌드중-에러발생해도-다시-빌드하면-에러지점부터-빌드-시작">docker 빌드중 에러발생해도 다시 빌드하면 에러지점부터 빌드 시작</h2>
+
+<h3 id="docker-빌드중-캐쉬를-무시하려면">docker 빌드중 캐쉬를 무시하려면</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+doker build --no-cache</code></pre></figure>
+
+<h3 id="일부의-캐쉬만-무시하려면">일부의 캐쉬만 무시하려면</h3>
+<p>도커파일에 일부분만 수정하는 방법</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ex<span class="o">)</span> ENV 넣어 특정부분만 무시하도록 함<span class="o">(</span>꼼수<span class="o">)</span>
+FROM ubunut:16.04
+ENV UPDATED_AT 2017-01-01  &lt;-- 이지점 아래부터 실행 
+RUN apt-get -qq update</code></pre></figure>
+
+<h3 id="22번-포트를-그대로-쓸-수-없을까-">22번 포트를 그대로 쓸 수 없을까 ?</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ex<span class="o">)</span> docker run -d -p &lt;host_port&gt;:&lt;Container_inside_port&gt; --name &lt;Containe name&gt; &lt;image name&gt;
+docker run -d -p 22:22 --name test_sshd2 rky0930/sshd
+ : 호스트에서 접근시 22, 컨테이너 내부 사용 포트 22
+docker run -d -p 2345:22 --name test_sshd2 rky0930/sshd
+ : 호스트에서 접근시 2345, 컨테이너 내부 사용 포트 22</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="dockerfile-명령어">Dockerfile 명령어</h2>
+
+<h3 id="env">ENV</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ENV &lt;key&gt; &lt;value&gt;
+ENV &lt;key&gt;<span class="o">=</span>&lt;value&gt;</code></pre></figure>
+
+<h3 id="환경-변수-사용">환경 변수 사용</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ex<span class="o">)</span> 
+FROM ubuntu: 16.04
+ENV foo /bar
+WORKDIR <span class="k">${</span><span class="nv">foo</span><span class="k">}</span>     <span class="c">### WORKDIR /bar</span>
+ADD .<span class="nv">$foo</span>          <span class="c">### ADD ./bar</span>
+COPY <span class="se">\$</span>foo /quux   <span class="c">### COPY $foo /quux \ &lt;-- excape</span></code></pre></figure>
+
+<h3 id="조건부-환경-변수-문법">조건부 환경 변수 문법</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+<span class="k">${</span><span class="nv">A</span><span class="k">:-</span><span class="nv">B</span><span class="k">}</span>
+: A가 정의되어 있으면 A, 아니면 B
+<span class="k">${</span><span class="nv">A</span>:+B<span class="k">}</span>
+: : A가 정의되어 있으면 B, 아니면 empty</code></pre></figure>
+
+<h3 id="cmd">CMD</h3>
+<ul>
+  <li>컨테이너 생성할 때 실행</li>
+  <li>Docker 에 하나의 CMD만 가능</li>
+  <li>여러 CMD가 있다면 마지막 것 만 실행</li>
+  <li>“docker build” 시점에 Dockerfile 의 CMD 설정능 오버라이드 가능</li>
+  <li>ENDPOINT 명령어의 파라미터로 사용 될 수도 있음</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+1<span class="o">)</span> CMD <span class="o">[</span><span class="s2">"executable"</span>, <span class="s2">"param1"</span>, <span class="s2">"param2"</span><span class="o">]</span> 
+2<span class="o">)</span> CMD <span class="nb">command </span>param1 param2    <span class="c">### /bin/sh -c </span>
+3<span class="o">)</span> CMD <span class="o">[</span><span class="s2">"param1"</span>, <span class="s2">"param2"</span><span class="o">]</span>     <span class="c">### ENTRYPOINT</span></code></pre></figure>
+
+<h3 id="cmd-vs-run">CMD vs RUN</h3>
+<ul>
+  <li>RUN 은 각 명령어를 실행할 때 마다 실행 되어 commit되고 레이어로 저장됨</li>
+  <li>CMD는 build 시점에는 실행되지 않음에 주의</li>
+  <li>CMD는 컨테이너를 run 할 때 실행</li>
+</ul>
+
+<h3 id="entrypoint">ENTRYPOINT</h3>
+<ul>
+  <li>컨테이너 생성할 때 실행</li>
+  <li>Dockerfile에서 하나의 ENTRYPOINT만 가능</li>
+  <li>여러 ENTRYPOINT 있다면 마지막 것 만 실행</li>
+  <li>“docker build” 시점에서 Dockerfile 의 ENTRYPOINT 설정을 오버라이드 가능</li>
+  <li>CMD 명령어의 파라미터로 사용 될 수 도 있음</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+1<span class="o">)</span> ENTRYPOINT <span class="o">[</span><span class="s2">"executable"</span>, <span class="s2">"param1"</span>, <span class="s2">"param2"</span><span class="o">]</span> 
+2<span class="o">)</span> ENTRYPOINT <span class="nb">command </span>param1 param2  </code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ex1<span class="o">)</span> 
+CMD <span class="o">[</span><span class="s2">"-T"</span><span class="o">]</span>
+ENTRYPOINT <span class="o">[</span><span class="s2">"/usr/sbin/sshd"</span><span class="o">]</span>
+<span class="o">=</span> /usr/sbin/sshd -T 
+
+ex2<span class="o">)</span>  <span class="c">### 실행하는 명령어를 바꿀때 사용 가능 </span>
+CMD <span class="o">[</span><span class="s2">"-T"</span><span class="o">]</span>
+ENTRYPOINT <span class="o">[</span><span class="s2">"/usr/sbin/sshd"</span><span class="o">]</span> 
+Docker run &lt;image&gt; -D 
+<span class="o">=</span> /usr/sbin/sshd -D</code></pre></figure>
+
+<p>[사진활용] 표1_CMD_ENTRYPOINT</p>
+<ul>
+  <li>point 조합하실때는 [””, “”] &lt;- 방법으로사용 할 것 
+<img src="http://localhost:4000/assets/static/Docker/CMD_ENTRYPOINT.png" width="800" /></li>
+</ul>
+
+<h3 id="workdir">WORKDIR</h3>
+<p>RUN, CMD, ENTRYPOINT, ADD 등 을 실행 할 directory를 지정</p>
+
+<ul>
+  <li>Dockerfile에서 여러번 사용 가능</li>
+  <li>상대 경로도 사용가능</li>
+  <li>해당 경로가 없으면 생성됨</li>
+  <li>“docker run”에서 -w 옵션으로 오버라이드 가능</li>
+</ul>
+
+<h3 id="user">USER</h3>
+<p>RUN, CMD, ENTRYPOINT등 을 실행 할 유저를 지정</p>
+
+<ul>
+  <li>지정하지 않으면 root로 실행</li>
+  <li>파라미터로 유저 ID나 UID를 지정</li>
+</ul>
+
+<h3 id="volume">Volume</h3>
+<p>호스트와 공유할 directory설정</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ex<span class="o">)</span> 
+VOLUME <span class="o">[</span><span class="s2">"/data1"</span>, <span class="s2">"/data2"</span><span class="o">]</span>
+VOLUME /data1 /data2
+---
+FROM ubunutu
+RUN mkdir /myvol
+RUN <span class="nb">echo</span> <span class="s2">"hello world"</span> &gt; /myvol/greeting
+VOLUME /myvol
+---</code></pre></figure>
+
+<h3 id="add">ADD</h3>
+<p>컨테이너에 파일 추가</p>
+
+<ul>
+  <li>tar.gz ADD시 자동으로 압축 풀어서 넣어줌</li>
+  <li>가져올 파일이 변경되면 ADD 명령으로 빌드 캐쉬가 무효화 될 수 있음에 주의</li>
+  <li>URL 이 인증을 필요로 한다면 사용 불가</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ex<span class="o">)</span> 
+ADD hom<span class="k">*</span> /mydir/
+ADD hom?.txt /mydir/
+ADD <span class="nb">test </span>relativeDir/
+ADD <span class="nb">test</span> /absoluteDir/
+ADD http://example.com/foo.zip /mydir/bar.zip
+ADD foo.tar.gz /mydir/
+--- 
+아래와 같은 방법으로 Context 외부에서 복사 불가 <span class="o">(</span>.. 을 사용하여 상위로 가서 작업한는 것은 불가<span class="o">)</span>
+ADD ../test/ /mydir/  
+---</code></pre></figure>
+
+<h3 id="copy">COPY</h3>
+<p>컨테이너에 파일 복사</p>
+
+<ul>
+  <li>ADD와 유사하지만 복사 기능만 제공</li>
+  <li>압축 해제 같은 복사 외의 기능은 제외</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+ex<span class="o">)</span> 
+COPY hom<span class="k">*</span> /mydir/
+COPY hom?.txt /mydir/
+COPY <span class="nb">test </span>relativeDir/
+COPY <span class="nb">test</span> /absoluteDir/
+---
+Context 외부에서 복사 불가  <span class="o">(</span>.. 을 사용하여 상위로 가서 작업한는 것은 불가<span class="o">)</span>
+COPY ../test/ /mydir/  
+---</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="docker-compose">docker-compose</h2>
+<p>여러 개의 컨테이너를 한번에 올리고 내릴 수 있는 툴</p>
+
+<ul>
+  <li>로컬 개발 환경, 테스트 서버, CI 등의 환경에서 사용하면 편리</li>
+  <li>각 애플리케이션에 dockerfile을 정의하고, 서비스 들을 docker-compose.yml에 설정</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+실행: docker-compose up
+정지: docker-compose stop
+확인: docker-compose ps</code></pre></figure>
+
+<h2 id="docker-compose-명령어">docker-compose 명령어</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+image      : 사용할 이미지 설정  
+dockerfile : 사용할 docekrfile을 지정  
+<span class="nb">command</span>    : 기본 command를 새로운 값으로 오버라이드  
+links      : 컨테이너 이름을 사용하면 ip 가 /etc/hosts에 저장됨  
+env_file   : 환경 변수를 저정한 파일 지정  
+volumes    : 마운트할 볼륨을 지정  
+port       : 사용할 포트 설정  
+dns        : 컨테이너가 사용할 dns 주소 설정  </code></pre></figure>
+
+<h3 id="docker-compose-실습---워드프레스wordpress">docker-compose 실습 - 워드프레스(wordpress)</h3>
+
+<p>1) docker-compose.yml</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+파일명: docker-compose.yml
+version: <span class="s1">'2'</span>
+services:
+
+    wordpress:
+        image: wordpress
+        ports:
+            - 8080:80
+        environment:
+            WORDPRESS_DB_PASSWORD: example
+    
+    mysql:
+        image: mariadb
+        environment:
+            MYSQL_ROOT_PASSWORD: example</code></pre></figure>
+
+<p>2) 실행</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+실행: 
+docker-compose up
+테스트: 
+localhost:8080 접속</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="docker-hub">docker hub</h2>
+
+<h3 id="docker-hub에-image-올리기">docker hub에 image 올리기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+docker login
+docker push &lt;사용자이름&gt;/&lt;이미지이름2&gt;:&lt;tags&gt;
+<span class="k">*</span> 이미지 이름 앞에 사용자 이름이 들어가야함 <span class="o">(</span>없으면 official이 되기 때문에 문제 발생<span class="o">)</span>
+ex<span class="o">)</span> 
+docker push rky0930/apache2:webserver</code></pre></figure>
+
+<h3 id="docker-hub에-image-받기">docker hub에 image 받기</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> 
+docker pull &lt;사용자이름&gt;/&lt;이미지이름2&gt;:&lt;tags&gt;
+ex<span class="o">)</span> 
+docker pull rky0930/apache2:webserver</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="spring-실습-에러-발생-디버그-필요">Spring 실습 (에러 발생.. 디버그 필요)</h2>
+<p>Java + Spring + Docker<br />
+Image &amp; Source code :<br />
+1) <a href="https://github.com/spring-projects/spring-petclinic">spring-petclinic</a><br />
+2) <a href="https://hub.docker.com//r/library/maven/">maven</a></p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">git clone https://github.com/spring-projects/spring-petclinic.git
+<span class="nb">cd </span>spring-petclinic
+vi Dockerfile</code></pre></figure>
+
+<h3 id="dockerfile">Dockerfile</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: Dockerfile
+--- 
+FROM maven:3.3-jdk-7-onbuild
+CMD <span class="o">[</span><span class="s2">"mvn"</span>, <span class="s2">"tomcat7:run"</span><span class="o">]</span>
+--- 
+build &amp; run: 
+docker build --tag my-spring .
+docker run -rm -it -p 9966:9966 my-spring
+ : -rm <span class="o">=</span> Automatically remove the container when it exits</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="jenkins-실습">Jenkins 실습</h2>
+<p>CI 툴, 주기 빌드 서버</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ex<span class="o">)</span> 
+<span class="c">### 실행</span>
+docker run --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins
+<span class="c">### 초기 패스워드 보기 </span>
+docker <span class="nb">exec</span> -it myjenkins cat /var/jenkins_home/secrets/initialAdminPassword
+<span class="c">### 접속 </span>
+localhost:8080</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="nodejs-실습">Node.js 실습</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: Dockerfile
+FROM node:6.9-onbuild</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: app.js
+var http <span class="o">=</span> require<span class="o">(</span><span class="s2">"http"</span><span class="o">)</span>;
+
+http.createServer<span class="o">(</span><span class="k">function</span><span class="o">(</span>req, res<span class="o">)</span> <span class="o">{</span>
+    res.writeHead<span class="o">(</span>200, <span class="o">{</span><span class="s2">"Content-Type"</span>: <span class="s2">"text/plain"</span><span class="o">})</span>;
+    res.write<span class="o">(</span><span class="s2">"Hello</span><span class="se">\r\n</span><span class="s2">"</span><span class="o">)</span>;
+    res.write<span class="o">(</span><span class="s2">"World</span><span class="se">\r\n</span><span class="s2">"</span><span class="o">)</span>;
+    res.end<span class="o">()</span>;
+<span class="o">})</span>.listen<span class="o">(</span>8080<span class="o">)</span>;</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: package.json
+<span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"my-node.js"</span>,
+    <span class="s2">"version"</span>: <span class="s2">"0.1.0"</span>,
+    <span class="s2">"description"</span>: <span class="s2">"docker nodejs test"</span>,
+    <span class="s2">"main"</span>: <span class="s2">"app.js"</span>,
+    <span class="s2">"scripts"</span>: <span class="o">{</span>
+        <span class="s2">"start"</span>: <span class="s2">"node app.js"</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="파일-다-만들고--build--run">파일 다 만들고  Build &amp; Run</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">- 빌드 
+Docker build --tag my_nodejs .
+- 실행 
+Docker run -it -p 8080:8080 my_nodejs</code></pre></figure>
+
+<p><br /></p>
+
+<h2 id="멀티-컨테이너-실전-연습">멀티 컨테이너 실전 연습</h2>
+<p>node.js + redis</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">동작 예<span class="o">)</span> 
+http://localhost/hello/name
+: name 추가
+http://localhost/bye/name
+: name 삭제
+http://localhost/members
+: name 리스트</code></pre></figure>
+
+<h3 id="프로젝트-구성">프로젝트 구성</h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mynode  
+ ㄴ mynode  
+   ㄴ app.js
+   ㄴ package.json
+ ㄴ Dockerfile
+
+myredis
+ ㄴdockerfile </code></pre></figure>
+
+<p>1) myreids/Dockerfile</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: myreids/Dockerfile
+FROM ubuntu:16.04
+MAINTAINER your name &lt;your.name@gmail.com&gt;
+ENV UPDATED_AT 2016-10-23
+
+RUN apt-get -yqq update
+RUN apt-get -yqq install software-properties-common python-software-properties
+RUN add-apt-repository ppa:chris-lea/redis-server
+RUN apt-get -yqq update
+RUN apt-get -yqq install redis-server redis-tools
+
+VOLUME <span class="o">[</span><span class="s2">"/var/lib/redis"</span>, <span class="s2">"/var/log/redis"</span><span class="o">]</span>
+
+EXPOSE 6379
+
+ENTRYPOINT <span class="o">[</span><span class="s2">"redis-server"</span>, <span class="s2">"--logfile /var/log/redis/my-redis.log"</span>, <span class="s2">"--protected-mode no"</span><span class="o">]</span></code></pre></figure>
+
+<p>2) mynode/Dockerfile</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: mynode/Dockerfile
+FROM ubuntu:16.04
+MAINTAINER your name &lt;your.name@gmail.com&gt;
+ENV UPDATED_AT 201610231122
+
+RUN apt-get -yqq update
+RUN apt-get -yqq install nodejs npm
+RUN ln -s /usr/bin/nodejs /usr/bin/node
+RUN mkdir -p /var/log/node
+
+ADD mynode /opt/node/
+
+WORKDIR /opt/node
+RUN npm install
+<span class="c">### Defendency library install</span>
+
+EXPOSE 8080
+CMD <span class="o">[</span><span class="s2">"nodejs"</span>, <span class="s2">"app.js"</span><span class="o">]</span></code></pre></figure>
+
+<p>3) mynode/mynode/app.js</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: mynode/mynode/app.js
+
+var express <span class="o">=</span> require<span class="o">(</span><span class="s1">'express'</span><span class="o">)</span>;
+var app <span class="o">=</span> express<span class="o">()</span>; 
+var redis <span class="o">=</span> require<span class="o">(</span><span class="s1">'redis'</span><span class="o">)</span>;
+var server <span class="o">=</span> require<span class="o">(</span><span class="s1">'http'</span><span class="o">)</span>.createServer<span class="o">(</span>app<span class="o">)</span>;
+
+var redisHost <span class="o">=</span> process.env.REDIS_HOST <span class="o">||</span> <span class="s1">'myredis'</span>;
+var redisPort <span class="o">=</span> 6379;
+var redisClient <span class="o">=</span> redis.createClient<span class="o">({</span>post: redisPort, host: redisHost<span class="o">})</span>;
+
+app.get<span class="o">(</span><span class="s1">'/'</span>, <span class="k">function</span><span class="o">(</span>req, res<span class="o">)</span> <span class="o">{</span>
+    res.json<span class="o">({</span>
+        status: <span class="s2">"ok"</span>
+    <span class="o">})</span>;
+<span class="o">})</span>;
+
+app.get<span class="o">(</span><span class="s1">'/hello/:name'</span>, <span class="k">function</span><span class="o">(</span>req, res<span class="o">)</span> <span class="o">{</span>
+    redisClient.sadd<span class="o">(</span><span class="s1">'party:members'</span>, req.params.name<span class="o">)</span>;
+    res.json<span class="o">({</span>
+        hello: req.params.name
+    <span class="o">})</span>;
+<span class="o">})</span>;
+
+app.get<span class="o">(</span><span class="s1">'/bye/:name'</span>, <span class="k">function</span><span class="o">(</span>req, res<span class="o">)</span> <span class="o">{</span>
+    redisClient.srem<span class="o">(</span><span class="s1">'party:members'</span>, req.params.name<span class="o">)</span>;
+    res.json<span class="o">({</span>
+        bye: req.params.name
+    <span class="o">})</span>;
+<span class="o">})</span>;
+
+app.get<span class="o">(</span><span class="s1">'/members'</span>, <span class="k">function</span><span class="o">(</span>req, res<span class="o">)</span> <span class="o">{</span>
+    redisClient.smembers<span class="o">(</span><span class="s1">'party:members'</span>, <span class="k">function</span><span class="o">(</span>err, reply<span class="o">)</span> <span class="o">{</span>
+        res.json<span class="o">({</span>members: reply<span class="o">})</span>;
+    <span class="o">})</span>;
+<span class="o">})</span>;
+
+var port <span class="o">=</span> process.env.HTTP_PORT <span class="o">||</span> 8080;
+server.listen<span class="o">(</span>port<span class="o">)</span>;
+console.log<span class="o">(</span><span class="s1">'Listening on port'</span> + port<span class="o">)</span>;</code></pre></figure>
+
+<p>4) myndoe/mynode/package.json<br />
+Tips: 버전 명시하는게 좋음, 배포시 버전이 변경되어 에러가 발생하는 경우가 있음</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">파일명: myndoe/mynode/package.json
+<span class="o">{</span>
+    <span class="s2">"name"</span>: <span class="s2">"my-node-server"</span>,
+    <span class="s2">"version"</span>: <span class="s2">"0.1.0"</span>,
+    <span class="s2">"description"</span>: <span class="s2">"multi container example"</span>, 
+    <span class="s2">"dependencies"</span>: <span class="o">{</span>
+        <span class="s2">"express"</span>: <span class="s2">"4.14.0"</span>,
+        <span class="s2">"redis"</span>: <span class="s2">"2.6.2"</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="실행">실행</h3>
+<p>Tips: Redis 먼저 실행 할 것<br />
+why ? nodejs 서버가 먼저 실행되면 Redis 링크 부분에서 에러 발생 할 수 있음.</p>
+
+<p>1) myredis 실행</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker build -t rky0930/myredis .
+docker run -d -h myredis --name myredis -p 6379:6379 rky0930/myredis
+docker run -it -h myredis --name myredis -p 6379:6379 rky0930/myredis 
+ : -h <span class="o">=</span>  Container host name</code></pre></figure>
+
+<p>2) mynode 실행</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">docker build -t rky0930/mynode .
+ : -t 이미지 이름
+docker run -d --name mynode --link myredis:myredis -p 8080:8080 rky0930/mynode
+docker run -it --name mynode --link myredis:myredis -p 8080:8080 rky0930/mynode</code></pre></figure>
+
+
+      </article>
+      <hr>
+        <div class="bdsharebuttonbox">
+             <a href="#" class="bds_fbook" data-cmd="fbook" title="Share to Facebook"></a>
+            <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+        </div>
+        <script>
+            window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    </div>
+	
+    <!-- duoshuo.com javascript include code. -->    
+    
+    <!-- disqus.com javascript include code. -->
+	
+    <div class="post-area post comment">
+        <div id="disqus_thread"></div>
+    </div>
+	<script>
+		var disqus_config = function () {
+			this.page.url = "http://rky0930.github.io/2017/06/02/a-Docker/"; 
+			this.page.identifier = "/2017/06/02/a-Docker"; 
+		};
+		(function() {
+			var d = document, s = d.createElement('script');
+			s.src = '//rky0930.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	
+    
+  </div>
+  
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+  
+</div>
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="back to top">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:rky0930@gmail.com"><span class="glyphicon glyphicon-envelope"></span> rky0930@gmail.com</a>
+        <span class="point"> · </span>
+        
+          <a href="https://github.com/rky0930">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>rky0930</span> -->
+          </a>
+          
+          <span class="point"> · </span>
+          <span><a href="https://github.com/rky0930/rky0930.github.io/blob/master/_posts/2017-06-02-a-Docker.md">View source</a></span>
+          <span class="point"> · </span>
+          <span><a class="newpost" href="javascript:;">New post</a></span>
+		  <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 rky0930</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script type="text/javascript">
+    function OnClickNewPost()
+    {
+        var title = prompt("Please enter title of your post");
+        if (title!=null){
+            title = title.replace(" ", "-");
+            var currentdate = new Date();
+            var urlNewPage = "https://github.com/rky0930/rky0930.github.io/new/master?filename=_posts/" 
+                + currentdate.getFullYear() + "-" + (currentdate.getMonth()+1) + "-" + currentdate.getDate() + "-" + title + ".md";
+                
+            var defaultText =  [
+                '---',
+                'layout: post',
+                'comments: true',
+                'categories: diary',
+                '---',
+                '## Title',
+                'text'
+                ].join('\n');
+            urlNewPage += "&value=" + encodeURIComponent(defaultText);
+            window.open(urlNewPage);
+        }
+    }
+    
+    $(function() {
+      // CreateNewPostLinks
+      $('.newpost').each(function(){
+          $(this).click(OnClickNewPost);
+      });
+    });
+</script>
+  
+  </body>
+</html>
