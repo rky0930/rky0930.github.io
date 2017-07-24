@@ -2,6 +2,7 @@
 layout: frontpage
 ---
 
-## Welcome to my websi
+## Welcome to my website
 
-Happy to share my code snippets with you.
+This is the place where I share my ideas on topics like [Paracraft](http://www.paracraft.cn) software design, artificial intelligence and education. 
+Feel free to send me emails or join our team. 
