@@ -27,13 +27,13 @@
       </li>
 
         {% for p in site.pages %}
-          {% if p.url != "/" %}       
-            {% if p.title %}
-              {% if p.url == page.url %}
-                <li class="active">
-                {% else %}
-                <li>
-              {% endif %}
+          {% if p.title %}
+            {% if p.url == page.url %}
+              <li class="active">
+              {% else %}
+              <li>
+            {% endif %}
+            {% if p.url != "/" %}       
               <a href="{{ p.url | prepend: site.baseurl }}"><span class="glyphicon {{ p.icon }}"></span> {{ p.title }}</a></li>
             {% endif %}
           {% endif %}            
