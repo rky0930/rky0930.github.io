@@ -9,7 +9,7 @@ categories: diary
 import logging
 
 logger = logging.getLogger("yoon")
-FORMAT = "[%(filename)s:%(lineno)s - %(funcName)1s() ] %(message)s"
+FORMAT = "[ yoon_debug | %(filename)s:%(lineno)s - %(funcName)1s() ] %(message)s"
 logging.basicConfig(format=FORMAT)
 logger.setLevel(logging.DEBUG)
 def aaa(test):
