@@ -8,17 +8,21 @@ categories: diary
 {% highlight python %}
 import logging
 
-logger = logging.getLogger("yoon")
-FORMAT = "[ yoon_debug | %(filename)s:%(lineno)s - %(funcName)1s() ] %(message)s"
-logging.basicConfig(format=FORMAT)
-logger.setLevel(logging.DEBUG)
-def aaa(test):
-    print(test)
-    logger.debug(test) 
+class GlobalLogging():
+    logger = logging.getLogger("yoon")
+    FORMAT = "[yoon_debug | %(filename)s:%(lineno)s - %(funcName)1s() ] %(message)s"
+    logging.basicConfig(format=FORMAT)
+    logger.setLevel(logging.DEBUG)
 
 
-aaa('test')
 '''
-output: [detect.py:15 - aaa() ] test
+# import 
+from yoon_logging import GlobalLogging
+
+# use in code
+GlobalLogging.logger.debug('Any debug message.') 
+
+# output
+[yoon_debug | show.py:176 - f_name() ] Any debug message.
 '''
 {% endhighlight %}
