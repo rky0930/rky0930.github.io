@@ -6,6 +6,7 @@ categories: diary
 ## Python logger
 
 {% highlight python %}
+# File name: yoon_logging.py
 import logging
 
 class GlobalLogging():
