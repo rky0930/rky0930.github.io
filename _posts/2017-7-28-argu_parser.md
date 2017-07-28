@@ -11,9 +11,10 @@ tags:
 - python
 ---
 
-{% highlight python %}
 ## Python | argparse
 
+
+{% highlight python %}
 #!/usr/bin/python
 
 import argparse
