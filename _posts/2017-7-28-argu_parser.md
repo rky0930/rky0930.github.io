@@ -1,9 +1,18 @@
 ---
 layout: post
+title: "Python | argparse"
+date: 2017-7-7 20:26:00
 comments: true
-categories: diary
+description: "argparse"
+keywords: ""
+categories:
+- python
+tags:
+- python
 ---
-## Title
+
+{% highlight python %}
+## Python | argparse
 
 #!/usr/bin/python
 
@@ -30,3 +39,20 @@ if __name__ == '__main__':
 
     print(type(args.store_true))
     print(args.store_true)    
+    
+'''
+output: 
+Python | argparse
+ python arg_test.py -i 2 -s sss -st -sf
+<type 'str'>
+2
+<type 'str'>
+sss
+<type 'bool'>
+False
+<type 'bool'>
+True
+'''
+{% endhighlight %}
+
+    
