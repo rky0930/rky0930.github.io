@@ -580,7 +580,7 @@
         <button onclick="toggle_file_attr_panel()" class="leftsidebar_accordion" id="file_attr_panel_button">File Attributes</button>
         <button onclick="show_default_attribute(this)" class="leftsidebar_accordion">Default Attribute</button>        
           <div class="leftsidebar_accordion_panel">
-            <textarea id="DefaultAttributeTextArea" rows="20" style="width: 95%;"></textarea>
+            <textarea id="DefaultAttributeTextArea" rows="20" style="width: 95%;" placeholder='ex: &#13;&#10;{&#13;&#10; "id": [ &#13;&#10;    "person",&#13;&#10;    "bicycle",&#13;&#10;    "car",&#13;&#10;    "motorcycle",&#13;&#10;    "airplane",&#13;&#10;    "train"&#13;&#10; ]&#13;&#10;}'></textarea>
             <button type="button" onclick="set_default_attribute()">Set</button>
           </div>
         <button onclick="toggle_accordion_panel(this)" class="leftsidebar_accordion">Keyboard Shortcuts</button>
@@ -4738,7 +4738,9 @@ function hide_default_attribute_select_box() {
 function show_default_attribute(e) {
   e.classList.toggle('active');
   e.nextElementSibling.classList.toggle('show');
-  document.getElementById('DefaultAttributeTextArea').value = JSON.stringify(_via_default_attribute, undefined, 2);  
+  if (_via_default_attribute != ""){ 
+    document.getElementById('DefaultAttributeTextArea').value = JSON.stringify(_via_default_attribute, undefined, 2);  
+  }
 }
 
 function set_default_attribute() {
@@ -4755,6 +4757,7 @@ function set_default_attribute() {
     create_default_attribute_select_box(type, region_id)
   }
   update_default_attribute_select_box()
+  document.getElementById('DefaultAttributeTextArea').value = JSON.stringify(_via_default_attribute, undefined, 2); 
 }
 
 //
