@@ -580,7 +580,14 @@
         <button onclick="toggle_file_attr_panel()" class="leftsidebar_accordion" id="file_attr_panel_button">File Attributes</button>
         <button onclick="show_default_attribute(this)" class="leftsidebar_accordion">Default Attribute</button>        
           <div class="leftsidebar_accordion_panel">
-            <textarea id="DefaultAttributeTextArea" rows="20" style="width: 95%;" placeholder='ex: &#13;&#10;{&#13;&#10; "id": [ &#13;&#10;    "person",&#13;&#10;    "bicycle",&#13;&#10;    "car",&#13;&#10;    "motorcycle",&#13;&#10;    "airplane",&#13;&#10;    "train"&#13;&#10; ]&#13;&#10;}'></textarea>
+            <select id="DefaultAttributeExampleSelectBox" onchange="default_attribute_example_selectbox_change()">
+              <option value="none">-- select an option --
+              <option value="mscoco">MS-COCO
+              <option value="kitti">KITTI
+              <option value="pascal">PASCAL VOC
+              <option value="pet">Oxford-IIIT Pet
+            </select>
+            <textarea id="DefaultAttributeTextArea" rows="20" style="width: 95%;" onchange="default_attribute_textarea_change()" placeholder='ex: &#13;&#10;{&#13;&#10; "id": [ &#13;&#10;    "person",&#13;&#10;    "bicycle",&#13;&#10;    "car",&#13;&#10;    "motorcycle",&#13;&#10;    "airplane",&#13;&#10;    "train"&#13;&#10; ]&#13;&#10;}'></textarea>
             <button type="button" onclick="set_default_attribute()">Set</button>
           </div>
         <button onclick="toggle_accordion_panel(this)" class="leftsidebar_accordion">Keyboard Shortcuts</button>
@@ -4564,13 +4571,10 @@ function add_new_attribute(type, attribute_name) {
 function init_default_attribute() {
   
   TextAreaValue = document.getElementById("DefaultAttributeTextArea").value
-  if (TextAreaValue == '{}') {
-    _via_default_attribute = //<!--AUTO_INSERT_VIA_DEFAULT_ATTRIBUTE-->
-    //{ "id":  ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'] }
-    { "id":  ['person', 'bicycle'],"color":  ['red', 'yellow'] }
-  }else{
+  if (TextAreaValue != "") {
     _via_default_attribute = JSON.parse(TextAreaValue)
   }
+
   for (var attr in _via_default_attribute) {
     if (_via_default_attribute.hasOwnProperty(attr)) {
         add_new_attribute('r', attr);
@@ -4743,11 +4747,8 @@ function show_default_attribute(e) {
   }
 }
 
-function set_default_attribute() {
-  default_attribute_text = document.getElementById('DefaultAttributeTextArea').value
-  _via_default_attribute = JSON.parse(default_attribute_text)
+function recreate_default_attribute_select_box() {
   default_attribute_select_boxs = document.getElementsByClassName("default_attribute_select_box")
-  console.log(default_attribute_select_boxs.length)
   for (var i=0, box; box =  default_attribute_select_boxs[i]; i++) {
     box_id = box.getAttribute('id');
     type_and_region_id = box_id.split("#");
@@ -4756,10 +4757,89 @@ function set_default_attribute() {
     region_id = type_and_region_id[2]
     create_default_attribute_select_box(type, region_id)
   }
-  update_default_attribute_select_box()
-  document.getElementById('DefaultAttributeTextArea').value = JSON.stringify(_via_default_attribute, undefined, 2); 
+  // update default attribute select box
+  if (default_attribute_select_boxs.length > 0) {
+    update_default_attribute_select_box()
+  }
 }
 
+function set_default_attribute() {
+  default_attribute_text = document.getElementById('DefaultAttributeTextArea').value
+  if (default_attribute_text == "") {
+    _via_default_attribute = {}
+  } else {
+    _via_default_attribute = JSON.parse(default_attribute_text)
+    // Format text to Json 
+    document.getElementById('DefaultAttributeTextArea').value = JSON.stringify(_via_default_attribute, undefined, 2);
+  } 
+  recreate_default_attribute_select_box()
+}
+
+function default_attribute_textarea_change() {
+  var DefaultAttributeExampleSelectBox = document.getElementById('DefaultAttributeExampleSelectBox')
+  if (DefaultAttributeExampleSelectBox.value != 'none') {
+    DefaultAttributeExampleSelectBox.selectedIndex = 0;
+  } 
+}
+
+function default_attribute_example_selectbox_change() {
+  var selected_value = document.getElementById('DefaultAttributeExampleSelectBox').value
+  if (selected_value == 'none') {
+    document.getElementById('DefaultAttributeTextArea').value = ""
+  } else {
+    if (selected_value == 'mscoco') {
+      _via_default_attribute = { 
+        "display_name":  
+        ["person", "bicycle", "car", "motorcycle", 
+        "airplane", "bus", "train", "truck", "boat", 
+        "traffic light", "fire hydrant", "stop sign", 
+        "parking meter", "bench", "bird", "cat", "dog", 
+        "horse", "sheep", "cow", "elephant", "bear", "zebra", 
+        "giraffe", "backpack", "umbrella", "handbag", "tie", 
+        "suitcase", "frisbee", "skis", "snowboard", "sports ball", 
+        "kite", "baseball bat", "baseball glove", "skateboard", 
+        "surfboard", "tennis racket", "bottle", "wine glass", 
+        "cup", "fork", "knife", "spoon", "bowl", "banana", 
+        "apple", "sandwich", "orange", "broccoli", "carrot", 
+        "hot dog", "pizza", "donut", "cake", "chair", "couch", 
+        "potted plant", "bed", "dining table", "toilet", "tv", 
+        "laptop", "mouse", "remote", "keyboard", "cell phone", 
+        "microwave", "oven", "toaster", "sink", "refrigerator", 
+        "book", "clock", "vase", "scissors", "teddy bear",
+        "hair drier", "toothbrush"] 
+      } 
+    } else if (selected_value == 'kitti') {
+      _via_default_attribute = { 
+        "name": ["car", "pedestrian"] 
+      }
+    } else if (selected_value == 'pascal') {
+      _via_default_attribute = { 
+        "display_name":  
+        ["aeroplane", "bicycle", "bird", "boat", 
+         "bottle", "bus", "car", "cat", "chair", 
+         "cow", "diningtable", "dog", "horse", 
+         "motorbike", "person", "pottedplant", 
+         "sheep", "sofa", "train", "tvmonitor"] 
+      } 
+    } else if (selected_value == 'pet') {
+      _via_default_attribute = { 
+        "name":  
+        ["Abyssinian", "american_bulldog", "american_pit_bull_terrier", 
+        "basset_hound", "beagle", "Bengal", "Birman", "Bombay", 
+        "boxer", "British_Shorthair", "chihuahua", "Egyptian_Mau", 
+        "english_cocker_spaniel", "english_setter", "german_shorthaired", 
+        "great_pyrenees", "havanese", "japanese_chin", "keeshond", 
+        "leonberger", "Maine_Coon", "miniature_pinscher", "newfoundland", 
+        "Persian", "pomeranian", "pug", "Ragdoll", "Russian_Blue", 
+        "saint_bernard", "samoyed", "scottish_terrier", "shiba_inu", 
+        "Siamese", "Sphynx", "staffordshire_bull_terrier", "wheaten_terrier", 
+        "yorkshire_ter"] 
+      } 
+    }
+    document.getElementById('DefaultAttributeTextArea').value = JSON.stringify(_via_default_attribute, undefined, 2); 
+    set_default_attribute()
+  }
+}
 //
 // hooks for sub-modules
 // implemented by sub-modules
